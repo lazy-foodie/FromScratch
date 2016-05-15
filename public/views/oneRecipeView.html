@@ -1,5 +1,54 @@
-<div class="jumbotron text-center">
-	<h1>Recipe Details Page</h1>
+<div class = 'container pad-lr-0' ng-controller ='RecipeController' ng-init='getRecipeDetail()'>
 
-	<p>{{ tagline }}</p>
+<div class="container search-form">
+    <div class ='row alignCenter'>
+        <h1 alignCenter>Recipe Details Page</h1>
+		<p>{{ tagline }}</p>
+    </div>
 </div>
+
+<div class="container table-result">
+	<div class= "container header">
+		<h2>RecipeId = {{recipe_id}}</h2>
+		<b>Here are the details for recipe id {{recipe_id}}.</b>
+	</div>
+	<div class= "container content">
+	<table class = "table table-bordered">
+	    <tr>
+	        <th>id</th>
+	        <th>name</th>
+	        <th>yield</th>
+	        <th>totalTime</th>
+	         <th>source</th>
+
+	    </tr>
+	    <tr>
+	        <td>{{recipeDetail.id}}</td>
+	        <td>{{recipeDetail.name}}</td>
+	        <td>{{recipeDetail.yield}}</td>
+	        <td>{{recipeDetail.totalTime}}</td>
+	        <td>{{recipeDetail.source}}</td>
+
+	    </tr>
+	</table>
+	</div>
+</div>
+
+<!-- 	<table cellpadding="5" cellspacing="0" border="1">
+	    <tr class ="hidden">
+	        <th>id</th>
+	        <th>name</th>
+	        <th>yield</th>
+	        <th>totalTime</th>
+	         <th>source</th>
+
+	    </tr>
+	    <tr>
+	        <td>{{recipeDetail.id}}</td>
+	        <td>{{recipeDetail.name}}</td>
+	        <td>{{recipeDetail.yield}}</td>
+	        <td>{{recipeDetail.totalTime}}</td>
+	        <td>{{recipeDetail.source}}</td>
+
+	    </tr>
+	</table> -->

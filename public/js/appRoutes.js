@@ -11,14 +11,16 @@
         // nerds page that will use the NerdController
         .when('/nerds', {
             templateUrl: 'views/nerd.html',
-            controller: 'NerdController'
+            controller:'NerdController' 
         })
 
         // favRecipes page whose controller will be decided from the view
         .when('/favRecipes', {
             templateUrl: 'views/favoriteRecipesView.html'
         })
-
+        .when('/recipes/:recipeId', {
+            templateUrl: 'views/oneRecipeView.html'
+        })
         // login page whose controller will be decided from the view
         .when('/login', {
             templateUrl: 'views/loginView.html'

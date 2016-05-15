@@ -2,9 +2,11 @@
 
 // modules =================================================
 var express        = require('express');
+var morgan         = require('morgan');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
+var url = require('url');
 
 // configuration ===========================================
     
@@ -19,6 +21,7 @@ var port = process.env.PORT || 8080;
 // mongoose.connect(db.url); 
 
 // get all data/stuff of the body (POST) parameters
+app.use(morgan('dev')); 
 // parse application/json 
 app.use(bodyParser.json()); 
 
@@ -33,6 +36,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public')); 
+app.use('/app/json/', express.static(__dirname + '/app/json'));
 
 // routes ==================================================
 require('./app/routes')(app); // configure our routes
