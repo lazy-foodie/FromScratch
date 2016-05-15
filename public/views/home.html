@@ -1,7 +1,63 @@
-<!-- public/views/home.html -->
+<!-- Using global controller 'MainContrller' -->
+<div class = 'container' ng-controller ='MainController'>
+    <!-- SEARCH FORM -->
+    <div class="container search-form">
+        <div class ='row alignCenter'>
+            <h1 alignCenter>Search Form Area</h1>
+            <p>{{ tagline }}</p>
+        </div>
+        <div class ='row '>
+            <form action="" method="">
+            <label for="search"></label>
+            <input type="text" placeholder="Please put your ingredients" />
+            <button type="submit">Find</button>
+            </form>
+        </div>   
+    </div>
 
-<div class="jumbotron text-center">
-    <h1>Home Page 4 Life</h1>
+<!-- PHOTO GALERY -->
+    <div class="container photo-galery">
+        <h3 class="panel-heading container-spl">Top 10 Rated Recipes</h3>
+        <div class="container" ng-repeat="item in items">
+            <span ng-switch="$index % 4">
+                <div class="row" ng-switch-when="0">
+                    <div class="col-sm-3">
+                        <a href="#/recipes/{{item.id}}" class="thumbnail">
+                            <img title="{{item.name}}" ng-src="{{item.url}}" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#/recipes/{{item.id}}" class="thumbnail">
+                            <img title="{{item.name}}" ng-src="{{item.url}}" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#/recipes/{{item.id}}" class="thumbnail">
+                            <img title="{{item.name}}" ng-src="{{item.url}}" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="#/recipes/{{item.id}}" class="thumbnail">
+                            <img title="{{item.name}}" ng-src="{{item.url}}" class="img-responsive">
+                        </a>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
 
-    <p>{{ tagline }}</p>
+<!-- <div class="container">
+<table cellpadding="5" cellspacing="0" border="1">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+         <th>url</th>
+    </tr>
+    <tr ng-repeat="item in items">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.url}}</td>
+    </tr>
+</table>
+</div> -->
 </div>
