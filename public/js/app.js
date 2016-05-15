@@ -7,5 +7,5 @@ angular.module(
 	'NerdCtrl', 
 	'NerdService', 
 	'RecipeService',
-	'UserCtrl'
+	'UserCtrl', 'RecipeCtrl', 'FavoriteRecipesCtrl'
 ]);

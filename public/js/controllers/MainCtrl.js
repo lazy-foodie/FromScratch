@@ -1,11 +1,18 @@
-// angular.module('MainCtrl', []).controller('MainController', function($scope) {
-// 	$scope.tagline = 'Comming Soon... :)';	
-// });
+angular.module('MainCtrl', []).controller('MainController',
+	function($scope,  $rootScope, RecipeService) {
+	    $scope.tagline = 'Comming Soon... :)';	
+		$scope.getTopRecipes = function() {
+			var recipes = RecipeService.GetTopRecipes();
+			$scope.recipes = recipes;
+			// $rootScope.listRecipes = listRecipes;
+		};
+		$scope.searchRecipes = function () {
+			getRecipesByQuery();
+	    }
 
-
-angular.module('MainCtrl', []).controller('MainController', function($scope, RecipeService) {
-    $scope.tagline = 'Comming Soon... :)';	
-	$scope.items =[];
-	$scope.items = RecipeService.getAllRecipes();
-
-});
+	    function getRecipesByQuery() {
+	    	RecipeService.GetRecipesByQuery($scope.searchQuery);
+	        $scope.searchQuery = "";
+	    }
+	}
+);
