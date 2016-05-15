@@ -1,6 +1,11 @@
-// public/js/controllers/MainCtrl.js
-angular.module('MainCtrl', []).controller('MainController', function($scope) {
+// angular.module('MainCtrl', []).controller('MainController', function($scope) {
+// 	$scope.tagline = 'Comming Soon... :)';	
+// });
 
-    $scope.tagline = 'To the moon and back!';   
+
+angular.module('MainCtrl', []).controller('MainController', function($scope, RecipeService) {
+    $scope.tagline = 'Comming Soon... :)';	
+	$scope.items =[];
+	$scope.items = RecipeService.getAllRecipes();
 
 });

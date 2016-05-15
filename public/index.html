@@ -2,44 +2,114 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<!-- ensure IE uses the latest version of IE  -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <base href="/">
 
-    <title>Starter Node and Angular</title>
+    <title>Lazy Foodie</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
-
-    <!-- JS -->
-    <script src="libs/angular/angular.min.js"></script>
-    <script src="libs/angular-route/angular-route.min.js"></script>
-
-    <!-- ANGULAR CUSTOM -->
-    <script src="js/controllers/MainCtrl.js"></script>
-    <script src="js/controllers/NerdCtrl.js"></script>
-    <script src="js/services/NerdService.js"></script>
-    <script src="js/appRoutes.js"></script>
-    <script src="js/app.js"></script>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap.offcanvas.min.css">  
+    <link rel="stylesheet" href="css/bootstrap.combined.min.css">  
+    <link rel="stylesheet" href="css/jquery-ui.min.css">      
+    <!-- custom styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
 </head>
-<body ng-app="sampleApp" ng-controller="NerdController">
-<div class="container">
-
+<body ng-app="lazyFoodieApp">
     <!-- HEADER -->
-    <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Stencil: Node and Angular</a>
-        </div>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Lazy Foodie</a>
+            </div>
 
-        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-        <ul class="nav navbar-nav">
-            <li><a href="/nerds">Nerds</a></li>
-        </ul>
-    </nav>
+            <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
+             <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/profile">My Profile</a></li>
+                    <li><a href="/favRecipes">My Favorite Recipes</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/nerds">Nerds</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ng-view></div>
+    <div class = "body-content" ng-view></div>
+    <div class="clear15"></div>
+    
+    <footer class="container-fluid pad-lr-0 bgFooter">
+        <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 footer">
+                <div class="col-xs-3 pad-lr-0 alignLeft">&copy; 
+                    <script language="JavaScript" type="text/javascript">
+                        now = new Date
+                        theYear=now.getYear()
+                        if (theYear < 1900)
+                        theYear=theYear+1900
+                        document.write(theYear)
+                    </script>
+                    LazyFoodie
+                </div>
+                <div class="col-xs-6 alignRight">
+                    <div class="col-xs-3 pad-lr-0"><a>Contact Us</a></div>
+                    <div class="col-xs-3 pad-lr-0"><a>About Us</a></div>
+                </div>
+                <div class="col-xs-3">
+                Recipe search powered by <a href='http://www.yummly.com/recipes'><img alt='Yummly' src='http://static.yummly.com/api-logo.png'/></a>
+                </div>
 
-</div>
+            </div>
+        </div>
+    </footer>
+
+    <!--[if lt IE 9]-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+
+    <!-- BOOTSTRAP AND JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="javascripts/jquery-ui.min.js"></script>    
+    <script src="javascripts/bootstrap.offcanvas.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- ANGULAR JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-aria.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-cookies.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-messages.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-sanitize.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-touch.js"></script>
+
+    <!-- ANGULAR CUSTOM -->
+    <!-- ROUTE DEFINITION -->
+    <script src="js/appRoutes.js"></script>
+    <script src="js/app.js"></script>
+    <!-- CONTROLLERS -->
+    <script src="js/controllers/MainCtrl.js"></script>
+    <script src="js/controllers/NerdCtrl.js"></script>
+    <script src="js/controllers/UserCtrl.js"></script>
+
+    <!-- SERVICES -->
+    <script src="js/services/NerdService.js"></script>
+    <script src="js/services/RecipeService.js"></script>
+
 </body>
 </html>
