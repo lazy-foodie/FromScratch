@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   {
       "name": "starter-node-angular",
       "main": "server.js",
@@ -8,3 +9,26 @@
         "method-override" : "~2.0.2"        
       }
     }
+=======
+{
+  "name": "lazy-foodie",
+  "version": "0.0.0",
+  "description": " A app that search for recipes to help you recycle food",
+  "main": "server.js",
+  "author": {
+    "name": "lazyfoodie",
+    "email": ""
+  },
+  "dependencies": {
+    "express" : "~4.5.1",
+    "morgan": "~1.0.0",
+    "mongoose": "^4.4.14",
+    "body-parser" : "~1.4.2",
+    "method-override": "^2.3.5",
+    "yummly": "^0.2.4",
+    "bower": "^1.7.9"
+  }
+}
+
+      
+>>>>>>> 88348166a7c2d0322867096ae9dd0d1f481ce402

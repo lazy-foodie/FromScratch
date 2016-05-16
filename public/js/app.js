@@ -1,2 +1,12 @@
 // public/js/app.js
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService']);
+angular.module(
+	'lazyFoodieApp', 
+	['ngRoute', 
+	'appRoutes', 
+	'MainCtrl', 
+	'NerdCtrl', 
+	'NerdService', 
+	'RecipeService',
+	'UserCtrl', 'RecipeCtrl', 'FavoriteRecipesCtrl'
+]);
+

@@ -1,0 +1,247 @@
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    font-family: 'Segoe Pro', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 16px;
+    margin: 0 0 50px;
+    height:100%;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.main:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0; bottom: 0;
+  z-index: -1;
+
+  /*//display: block;*/
+  background-color: black;
+  background-image: url('http://imaginefood.com/wp-content/uploads/2015/03/background.jpg');
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.container-spl {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container-spl2 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/*header*/
+.head-title {
+    margin-top: 7px;
+}
+
+/* nav bar */
+.navbar-toggle {
+    float: right;
+    margin-right: 5px !important;
+    margin-left: 10px;
+    border: 0px !important;
+    border-radius: 0px !important;
+    background-color: none;
+    background: none;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-bottom-color: #000;
+    margin-top: 10px;
+}
+
+.navbar-toggle:hover {
+    background: none;
+    background-color: #fff;
+}
+
+.navbar-inverse {
+    background-color: #107c10;
+    color: #fff;
+    border: 0px !important;
+}
+
+    .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
+        background-color: #fff;
+        color: #181818;
+    }
+
+    .navbar-inverse .navbar-brand {
+        color: #fff;
+    }
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #d2d2d2;
+    }
+
+        .navbar-inverse .navbar-nav > li > a:hover {
+            color: #ffffff;
+        }
+
+
+.navbar {
+    font-weight: 500;
+    margin-bottom:0px;
+    background:#B75050;
+    font-family: 'Segoe Pro', Tahoma, Geneva, Verdana, sans-serif !important; 
+    font-size: 15px;
+}
+
+
+.search-bar {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/* footer */
+footer {
+    background-color: #B75050;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    font-size: 13px;
+}
+
+.footer {
+    margin-top: 15px;
+    padding-right: 0px;
+}
+
+a {
+color: #bbb;
+}
+a:visited {
+color: #d2d2d2;
+}
+a:hover {
+color: #d2d2d2;
+}
+
+.pull-right {
+    float: right;
+    margin: 0px;
+}
+
+/* Set margin between div */
+.clear {
+    clear: both;
+}
+
+.clear10 {
+    clear: both;
+    height: 10px;
+}
+
+.clear15 {
+    clear: both;
+    height: 15px;
+}
+
+.clear5 {
+    clear: both;
+    height: 5px;
+}
+
+/* alignment */
+.alignRight {
+    text-align: right;
+    vertical-align: middle;
+}
+
+.alignLeft {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.alignCenter {
+    text-align: center;
+}
+
+/* padding */
+.pad-lr-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.pad-r-0 {
+    padding-right: 0px !important;
+}
+
+.pad-l-20 {
+    padding-left: 20px;
+}
+
+.padt-t-b-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pad-t-15 {
+    padding-top: 15px;
+}
+
+.mar-r-10 {
+    margin-right: 10px;
+}
+
+.mar-l-10 {
+    margin-left: 10px;
+}
+
+.divider {
+  margin: 0 8px 0 8px;
+}
+
+.divider:before {
+  content: "|";
+}
+
+/* styling for gallery*/
+.gallery:hover .photo {
+    box-shadow: 0 0 15px 5px #107c10;
+    opacity: .25;
+    -webkit-transform: scale(.8);
+       -moz-transform: scale(.8);
+        -ms-transform: scale(.8);
+         -o-transform: scale(.8);
+            transform: scale(.8);
+}
+.gallery .photo:hover {
+    box-shadow: none;
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+       -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+         -o-transform: scale(1.2);
+            transform: scale(1.2);
+}
+
+.title {
+    color: #e3e3e3;
+
+}

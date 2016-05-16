@@ -1,0 +1,32 @@
+<div class = 'container pad-lr-0' id="oneRecipe" ng-controller ='RecipeController' ng-init='getRecipeDetail()'>
+
+    <div class="row">
+        <div class ='col-md-6'>
+        <img src = {{hostedLargeUrl}} class ="img-responsive">
+        </div>
+        <div class ='col-md-6'>
+            <h2 alignCenter class="title">{{recipeName}}</h2>
+        </div>
+    </div>
+	<div class ='clear15'></div>
+
+
+  <!-- Default panel contents -->
+  	<div class="panel panel-default">
+  		<div class="panel-heading">Details</div>
+		<div class="panel-body">
+		   <p>Total Cooking Time: {{totalTime}}</p>
+		   <p >Rating: {{rating}} Out of 5</p>
+		   <p>Ingredient: {{ingredients}}</p>
+		   <p>Number Of Servings: {{numberOfServings}}</p>
+		</div>
+	</div>
+
+  	<div class="panel panel-default">
+	  	<div class="panel-heading">Source: {{sourceDisplayName}}</div>
+	  	<div class="panel-body">
+	   		<p> Source Site: {{sourceSiteUrl}} </p>
+	   		<p> Source Link: {{sourceRecipeUrl}} </p>
+	  	</div>
+   </div>
+</div>
