@@ -10,8 +10,7 @@ body {
     margin: 0 0 50px;
     height:100%;
     margin-bottom: 50px;
-  font-weight: 400;
-  color: #e3e3e3;
+    font-weight: 400;
 }
 
 .main:before {
@@ -104,6 +103,7 @@ body {
 
 
 .navbar {
+    font-weight: 500;
     margin-bottom:0px;
     background:#B75050;
     font-family: 'Segoe Pro', Tahoma, Geneva, Verdana, sans-serif !important; 
@@ -133,7 +133,7 @@ footer {
 }
 
 a {
-color: #fff;
+color: #bbb;
 }
 a:visited {
 color: #d2d2d2;
@@ -241,5 +241,7 @@ color: #d2d2d2;
             transform: scale(1.2);
 }
 
-  /*@include box-shadow(0 0 10px rgba(0,0,0,1));*/
+.title {
+    color: #e3e3e3;
 
+}
