@@ -1,36 +1,32 @@
-<div class = 'container pad-lr-0' ng-controller ='RecipeController' ng-init='getRecipeDetail()'>
+<div class = 'container pad-lr-0' id="oneRecipe" ng-controller ='RecipeController' ng-init='getRecipeDetail()'>
 
-<div class="container search-form">
-    <div class ='row alignCenter'>
-        <h1 alignCenter>Recipe Details Page</h1>
-		<p>{{ tagline }}</p>
+    <div class="row">
+        <div class ='col-md-6'>
+        <img src = {{hostedLargeUrl}} class ="img-responsive">
+        </div>
+        <div class ='col-md-6'>
+            <h2 alignCenter class="title">{{recipeName}}</h2>
+        </div>
     </div>
-</div>
+	<div class ='clear15'></div>
 
-<div class="container table-result">
-	<div class= "container header">
-		<h2>RecipeId = {{recipe_id}}</h2>
-		<b>Here are the details for recipe id {{recipe_id}}.</b>
+
+  <!-- Default panel contents -->
+  	<div class="panel panel-default">
+  		<div class="panel-heading">Details</div>
+		<div class="panel-body">
+		   <p>Total Cooking Time: {{totalTime}}</p>
+		   <p >Rating: {{rating}} Out of 5</p>
+		   <p>Ingredient: {{ingredients}}</p>
+		   <p>Number Of Servings: {{numberOfServings}}</p>
+		</div>
 	</div>
-	<div class= "container content">
-	<table class = "table table-bordered">
-	    <tr>
-	        <th>id</th>
-	        <th>name</th>
-	        <th>yield</th>
-	        <th>totalTime</th>
-	         <th>source</th>
 
-	    </tr>
-	    <tr>
-	        <td>{{recipeDetail.id}}</td>
-	        <td>{{recipeDetail.name}}</td>
-	        <td>{{recipeDetail.yield}}</td>
-	        <td>{{recipeDetail.totalTime}}</td>
-	        <td>{{recipeDetail.source}}</td>
-
-	    </tr>
-	</table>
-	</div>
+  	<div class="panel panel-default">
+	  	<div class="panel-heading">Source: {{sourceDisplayName}}</div>
+	  	<div class="panel-body">
+	   		<p> Source Site: {{sourceSiteUrl}} </p>
+	   		<p> Source Link: {{sourceRecipeUrl}} </p>
+	  	</div>
+   </div>
 </div>
-
