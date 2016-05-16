@@ -9,4 +9,3 @@ angular.module(
 	'RecipeService',
 	'UserCtrl', 'RecipeCtrl', 'FavoriteRecipesCtrl'
 ]);
-

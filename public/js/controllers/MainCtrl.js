@@ -1,4 +1,3 @@
-
 angular.module('MainCtrl', []).controller('MainController',
 	function($scope,  $rootScope, RecipeService) {
 	    $scope.tagline = 'Comming Soon... :)';	

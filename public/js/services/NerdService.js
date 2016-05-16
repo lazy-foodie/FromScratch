@@ -1,4 +1,3 @@
-
 // // public/js/services/NerdService.js
 // angular.module('NerdService', []).factory('NerdService', ['$http', function($http) {
 
@@ -130,4 +129,3 @@ angular.module('NerdService', []).factory('NerdService', function() {
 //     }
 
 // });
-

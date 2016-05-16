@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-  {
-      "name": "starter-node-angular",
-      "main": "server.js",
-      "dependencies": {
-        "express" : "~4.5.1",
-        "mongoose" : "~3.8.0",
-        "body-parser" : "~1.4.2",
-        "method-override" : "~2.0.2"        
-      }
-    }
-=======
 {
   "name": "lazy-foodie",
   "version": "0.0.0",
@@ -31,4 +19,3 @@
 }
 
       
->>>>>>> 88348166a7c2d0322867096ae9dd0d1f481ce402
