@@ -5,7 +5,7 @@ angular.module('MainCtrl', []).controller('MainController',
 			var recipes = RecipeService.GetTopRecipes();
 			$scope.recipes = recipes;
 			// $rootScope.listRecipes = listRecipes;
-		};
+		}
 		$scope.searchRecipes = function () {
 			getRecipesByQuery();
 	    }
