@@ -1,4 +1,4 @@
-<div class = 'container pad-lr-0' id="nerd" ng-controller ='FavoriteRecipesController'>
+<div class = 'container pad-lr-0' id="nerd" ng-controller ='NerdController'>
     <!-- START SEARCH FORM -->
     <div class="container container-spl">       
         <!-- HEADER SECTION -->
@@ -6,4 +6,22 @@
             <h1 alignCenter>Nerds and Proud</h1>
             <p>{{ tagline }}</p>
         </div>
+    </div>
+
+    <!-- START PHOTO GALERY -->
+    <div class="container pad-lr-0 container-spl">
+        <h3 class="panel-heading container-spl title">Top 10 Rated Recipes</h3>
+        <div class="container gallery" >
+            <span >
+                <div class="row" >
+                    <div class="col-sm-3 photo" ng-repeat="recipe in recipes">
+                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
+                            <img title="{{recipe.recipeName}}" ng-src="{{recipe.imageUrlsBySize[90]}}" class="img-responsive">
+                        </a>
+                    </div>                
+                </div>
+            </span>
+        </div>
+    </div>
+    <!-- END PHOTO GALERY -->
 </div>

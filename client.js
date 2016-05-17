@@ -6,29 +6,13 @@ var morgan         = require('morgan');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-var mongoose = require('mongoose');
 var fs = require('fs');
 var url = require('url');
 var http = require('http');
-// configuration ===========================================
-    
-// config files
-var dbUrl = require('./config/db');
 
 // set our port
-var port = process.env.PORT || 8080; 
+var port = process.env.PORT || 3000; 
 
-// connect to our mongoDB database and start the app when mongo db is connected successfully
-var db;
-mongoose.connect(dbUrl.url, (err, database) => {
-  if (err) return console.log(err)
-  db = database
-  // start app ===============================================
-// startup our app at http://localhost:8080
-app.listen(port);               
-// shoutout to the user                     
-console.log('Magic happens on port ' + port);
-})
 
 // get all data/stuff of the body (POST) parameters
 app.use(morgan('dev')); 
@@ -47,13 +31,11 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public')); 
-app.use('/app', express.static(__dirname + '/app'));
-app.use('/app/models/', express.static(__dirname + '/app/models'));
+// app.use('/app', express.static(__dirname + '/app'));
+// app.use('/app/models/', express.static(__dirname + '/app/models'));
 
-// routes ==================================================
-require('./app/routes/nerdRoute')(app); // configure our routes
-require('./app/routes/userRoute')(app); // configure our routes
-require('./app/routes/favoriteRoute')(app); // configure our routes
+// // main route ==================================================
+require('./routes')(app); // configure our routes
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -85,6 +67,13 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+// // start app ===============================================
+// // startup our app at http://localhost:3000
+app.listen(port);               
+
+// shoutout to the user                     
+console.log('Magic happens on port ' + port);
 
 // expose app           
 exports = module.exports = app;                         

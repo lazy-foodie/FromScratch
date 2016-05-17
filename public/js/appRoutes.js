@@ -11,7 +11,6 @@
         // nerds page that will use the NerdController
         .when('/nerds', {
             templateUrl: 'views/nerd.html',
-            controller:'NerdController' 
         })
 
         // favRecipes page whose controller will be decided from the view
