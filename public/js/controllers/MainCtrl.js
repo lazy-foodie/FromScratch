@@ -3,7 +3,7 @@ angular.module('MainCtrl', []).controller('MainController',
 	    $scope.tagline = 'Comming Soon... :)';	
 		$scope.getTopRecipes = function() {
 			var recipes = RecipeService.GetTopRecipes();
-			$scope.recipes = recipes;
+			$scope.recipes = recipes.matches;
 			// $rootScope.listRecipes = listRecipes;
 		};
 		$scope.searchRecipes = function () {
