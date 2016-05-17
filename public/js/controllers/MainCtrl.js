@@ -7,11 +7,13 @@ angular.module('MainCtrl', []).controller('MainController',
 			//$scope.makecallURL = 
 		};
 		$scope.searchRecipes = function () {
-			getRecipesByQuery();
-		    window.location = "/views/searchResultView.html";
+		   getRecipesByQuery();
+		    window.location = "/searchResult";
+		    alert(window.location);
 	    }
 
 	    function getRecipesByQuery() {
+	    	alert($scope.searchQuery);
 	    	RecipeService.GetRecipesByQuery($scope.searchQuery);
 	        $scope.searchQuery = "";
 	    }

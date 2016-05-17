@@ -1,27 +1,3 @@
-// // public/js/services/NerdService.js
-// angular.module('NerdService', []).factory('NerdService', ['$http', function($http) {
-
-//     return {
-//         // call to get all nerds
-//         get : function() {
-//             return $http.get('/api/nerds');
-//         },
-
-
-//                 // these will work when more API routes are defined on the Node side of things
-//         // call to POST and create a new nerd
-//         create : function(nerdData) {
-//             return $http.post('/api/nerds', nerdData);
-//         },
-
-//         // call to DELETE a nerd
-//         delete : function(id) {
-//             return $http.delete('/api/nerds/' + id);
-//         }
-        
-//     }       
-
-// }]);
 
 'use strict';
 
@@ -103,10 +79,10 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', function(
     return service;
 
     function getTopRecipes() {
-      return recipes;
 //      var url = yummlySearchUrl + "&requirePictures=true" + "onion+soup
-// &maxResult=10&start=10";
-//       return $http.get(url).matches;
+// &maxResult=12";
+//       var test =  $http.get(url);
+        return recipes;
     }
 
     function getRecipesByQuery() {
@@ -122,6 +98,7 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', function(
     function getTestData() {
       var url = "https://api.mongolab.com/api/1/databases/angularjs-intro/collections/users?apiKey=terrPcifZzn01_ImGsFOIZ96SwvSXgN9";
       return $http.get(url).then( handleSuccess, handleError);
+    }
 
     function handleError( response ) {
       // The API response from the server should be returned in a
@@ -146,8 +123,6 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', function(
 //            var url = yummlySearchUrl + "&requirePictures=true" + "onion+soup
 // &maxResult=10&start=10";
 //       return $http.get(url);
-
-    }
 }]);
 
 

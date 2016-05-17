@@ -1,30 +1,4 @@
-// // public/js/services/NerdService.js
-// angular.module('NerdService', []).factory('NerdService', ['$http', function($http) {
-
-//     return {
-//         // call to get all nerds
-//         get : function() {
-//             return $http.get('/api/nerds');
-//         },
-
-
-//                 // these will work when more API routes are defined on the Node side of things
-//         // call to POST and create a new nerd
-//         create : function(nerdData) {
-//             return $http.post('/api/nerds', nerdData);
-//         },
-
-//         // call to DELETE a nerd
-//         delete : function(id) {
-//             return $http.delete('/api/nerds/' + id);
-//         }
-        
-//     }       
-
-// }]);
-
-
-angular.module('NerdService', []).factory('NerdService', function() {
+angular.module('NerdService', []).factory('NerdService', function($http) {
             var recipes = [{
       "url": "https://lh3.googleusercontent.com/nJplGzIVN_M5vplJPPlaujuPtirBefbCkQWbknOAtrpkxWrRHzvOWA1rxENELor9Chld3wYEfkaQlPFJspfOKA=s200-c",
       "id": "Flat-Belly-Detox-water-1606683",
@@ -87,45 +61,40 @@ angular.module('NerdService', []).factory('NerdService', function() {
     }
     
   ];
-    return {
-        getAllRecipes : function(){
-            return recipes;
-        }
+
+    // var nerService = {};
+    // nerService.GetAllRecipes = getAllRecipes;
+    // nerService.GetTestData = getTestData;
+
+    // return nerService;
+
+    this.GetAllRecipes = function () {
+        return recipes;
     };
+    this.GetTestData = function () {
+        var url = "http://api.yummly.com/v1/api/recipes?_app_id=d6f2e548&_app_key=0ef41e85e08ae10a1015801376315497&&requirePictures=true&maxResult=12";
+        return $http.get(url);
+    };
+
+    // return {
+    //     getAllRecipes : function(){
+    //         return recipes;
+    //     },
+    //     getTestData: function() {
+    //         var url = "http://api.yummly.com/v1/api/recipes?_app_id=d6f2e548&_app_key=0ef41e85e08ae10a1015801376315497&&requirePictures=true&maxResult=12"
+    //         return $http.get(url);
+    //     }
+    // };
 });
 
 
-// angular.module('NerdService', []).factory('NerdService', function($http, $q) {
-//     return({
-//         getAllRecipes: getAllRecipes
-//     });   
-
-//     function getAllRecipes() {
-//         var request = $http({
-//             method: "get",
-//             url: "api/toprankedrecipes",
-//         });
-//         return( request.then( handleSuccess, handleError ) );   
-//     }   
-
-//     function handleError( response ) {
-//         // The API response from the server should be returned in a
-//         // nomralized format. However, if the request was not handled by the
-//         // server (or what not handles properly - ex. server error), then we
-//         // may have to normalize it on our end, as best we can.
-//         if (
-//             ! angular.isObject( response.data ) ||
-//             ! response.data.message
-//             ) {
-//             return( $q.reject( "An unknown error occurred." ) );
-//         }
-//         // Otherwise, use expected error message.
-//         return( $q.reject( response.data.message ) );
-//     }
-//     // I transform the successful response, unwrapping the application data
-//     // from the API response payload.
-//     function handleSuccess( response ) {
-//         return( response.data );
-//     }
-
-// });
+    // return {
+    //     getAllRecipes : function(){
+    //         var url = "http://api.yummly.com/v1/api/recipes?_app_id=d6f2e548&_app_key=0ef41e85e08ae10a1015801376315497&&requirePictures=true&maxResult=12"
+    //         return $http.get(url);
+    //     }
+    //     getTestData: function() {
+    //         var url = "https://api.mongolab.com/api/1/databases/angularjs-intro/collections/users?apiKey=terrPcifZzn01_ImGsFOIZ96SwvSXgN9";
+    //         return $http.get(url);
+    //     }
+    // };
