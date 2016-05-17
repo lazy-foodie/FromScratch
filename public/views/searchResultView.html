@@ -1,0 +1,43 @@
+<!-- Using global controller 'MainContrller' -->
+<div class = 'container pad-lr-0' id="home" ng-controller ='MainController' ng-init='getTopRecipes()'>
+    <!-- START SEARCH FORM -->
+    <div class="container container-spl">       
+        <!-- HEADER SECTION -->
+        <div class ='row alignCenter title'>
+                </div>
+       
+        <!-- END SEARCH AREA -->                
+    </div> 
+    <!-- END SEARCH FORM -->
+    <!-- START PHOTO GALERY -->
+    <div class="container pad-lr-0 container-spl">
+        <h3 class="panel-heading container-spl">Search Results</h3>
+        <div class="container gallery" ng-repeat="recipe in recipes">
+            <span  ng-switch="$index % 4">
+                <div class="row" ng-switch-when="0">
+                    <div class="col-sm-3 photo">
+                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
+                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 photo">
+                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
+                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 photo">
+                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
+                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 photo">
+                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
+                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
+                        </a>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+    <!-- END PHOTO GALERY -->
+</div>
