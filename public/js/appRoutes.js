@@ -29,6 +29,10 @@
          .when('/profile', {
             templateUrl: 'views/profileView.html'
         })
+         .when('/searchResult', {
+            templateUrl: 'views/searchResultView.html'
+        })
+         
         .otherwise({
         redirectTo: '/'
         });

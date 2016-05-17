@@ -110,9 +110,8 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', function(
     }
 
     function getRecipesByQuery() {
-//      var url = yummlySearchUrl + "&requirePictures=true" + "onion+soup
-// &maxResult=10&start=10";
-//       return $http.get(url).matches;      
+          var url = yummlySearchUrl + "&requirePictures=true" + "onion+soup&maxResult=10&start=10";
+          return $http.get(url).matches;      
     }
 
     function getRecipeById(recipeId) {

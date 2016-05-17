@@ -4,10 +4,11 @@ angular.module('MainCtrl', []).controller('MainController',
 		$scope.getTopRecipes = function() {
 			var recipes = RecipeService.GetTopRecipes();
 			$scope.recipes = recipes;
-			// $rootScope.listRecipes = listRecipes;
+			//$scope.makecallURL = 
 		};
 		$scope.searchRecipes = function () {
 			getRecipesByQuery();
+		    window.location = "/views/searchResultView.html";
 	    }
 
 	    function getRecipesByQuery() {
