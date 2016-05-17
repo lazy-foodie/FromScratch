@@ -1,11 +1,10 @@
 <!-- Using global controller 'MainContrller' -->
-<div class = 'container pad-lr-0' id="searchResult" ng-controller ='MainController'>
+<div class = 'container pad-lr-0' id="searchResult" ng-controller ='SearchResultController'>
     <!-- START SEARCH FORM -->
     <div class="container container-spl">       
         <!-- HEADER SECTION -->
         <div class ='row alignCenter title'>
             <h1 alignCenter>Search Form Area</h1>
-            <p>{{ tagline }}</p>
         </div>
         <!-- SEARCH AREA -->        
         <div class ='row container-spl'>
@@ -25,7 +24,7 @@
     <!-- END SEARCH FORM -->
     <!-- START PHOTO GALERY -->
     <div class="container pad-lr-0 container-spl">
-        <h3 class="panel-heading container-spl">Search Result</h3>
+        <h3 class="panel-heading container-spl title">Search Result</h3>
         <div class="container gallery" ng-repeat="recipe in recipes">
             <span  ng-switch="$index % 4">
                 <div class="row" ng-switch-when="0">

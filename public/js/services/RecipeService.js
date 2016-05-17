@@ -9,67 +9,67 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', function(
     var yummlySearchUrl = yummlyApiUrl + "?" + authentication + "&q=";
     var yummlyGetUrl = yummlyApiUrl + "/";
 
-    var recipes = [{
-      "url": "https://lh3.googleusercontent.com/nJplGzIVN_M5vplJPPlaujuPtirBefbCkQWbknOAtrpkxWrRHzvOWA1rxENELor9Chld3wYEfkaQlPFJspfOKA=s200-c",
-      "id": "Flat-Belly-Detox-water-1606683",
-      "name": "Flat Belly Detox water"
+    // var recipes = [{
+    //   "url": "https://lh3.googleusercontent.com/nJplGzIVN_M5vplJPPlaujuPtirBefbCkQWbknOAtrpkxWrRHzvOWA1rxENELor9Chld3wYEfkaQlPFJspfOKA=s200-c",
+    //   "id": "Flat-Belly-Detox-water-1606683",
+    //   "name": "Flat Belly Detox water"
      
-    },
-    {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-    {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-    {
-        "id": "Guacamole-1601887",
-      "url": "https://lh3.googleusercontent.com/QuZPWUWgrbHo7OZ3u_lEd_XVjH1mhYgKlykkqgneNgJ943RMWZhGdwzycWc24hWKqrlj1HC4j9Ry4BJwtyydqA=s200-c",
-      "recipeName": "Guacamole",
-    },
-        {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-            {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-    {
-      "url": "https://lh3.googleusercontent.com/nJplGzIVN_M5vplJPPlaujuPtirBefbCkQWbknOAtrpkxWrRHzvOWA1rxENELor9Chld3wYEfkaQlPFJspfOKA=s200-c",
-      "id": "Flat-Belly-Detox-water-1606683",
-      "name": "Flat Belly Detox water"
+    // },
+    // {
+    //   "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
+    //   "id": "Guacamole-1601887",
+    //   "name": "Guacamole"   
+    // },
+    // {
+    //   "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
+    //   "id": "Guacamole-1601887",
+    //   "name": "Guacamole"   
+    // },
+    // {
+    //     "id": "Guacamole-1601887",
+    //   "url": "https://lh3.googleusercontent.com/QuZPWUWgrbHo7OZ3u_lEd_XVjH1mhYgKlykkqgneNgJ943RMWZhGdwzycWc24hWKqrlj1HC4j9Ry4BJwtyydqA=s200-c",
+    //   "recipeName": "Guacamole",
+    // },
+    //     {
+    //   "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
+    //   "id": "Guacamole-1601887",
+    //   "name": "Guacamole"   
+    // },
+    //         {
+    //   "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
+    //   "id": "Guacamole-1601887",
+    //   "name": "Guacamole"   
+    // },
+    // {
+    //   "url": "https://lh3.googleusercontent.com/nJplGzIVN_M5vplJPPlaujuPtirBefbCkQWbknOAtrpkxWrRHzvOWA1rxENELor9Chld3wYEfkaQlPFJspfOKA=s200-c",
+    //   "id": "Flat-Belly-Detox-water-1606683",
+    //   "name": "Flat Belly Detox water"
      
-    },
+    // },
     
-    {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-            {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-    {
-      "url": "https://lh3.googleusercontent.com/nJplGzIVN_M5vplJPPlaujuPtirBefbCkQWbknOAtrpkxWrRHzvOWA1rxENELor9Chld3wYEfkaQlPFJspfOKA=s200-c",
-      "id": "Flat-Belly-Detox-water-1606683",
-      "name": "Flat Belly Detox water"
+    // {
+    //   "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
+    //   "id": "Guacamole-1601887",
+    //   "name": "Guacamole"   
+    // },
+    //         {
+    //   "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
+    //   "id": "Guacamole-1601887",
+    //   "name": "Guacamole"   
+    // },
+    // {
+    //   "url": "https://lh3.googleusercontent.com/nJplGzIVN_M5vplJPPlaujuPtirBefbCkQWbknOAtrpkxWrRHzvOWA1rxENELor9Chld3wYEfkaQlPFJspfOKA=s200-c",
+    //   "id": "Flat-Belly-Detox-water-1606683",
+    //   "name": "Flat Belly Detox water"
      
-    },
-    {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    }
+    // },
+    // {
+    //   "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
+    //   "id": "Guacamole-1601887",
+    //   "name": "Guacamole"   
+    // }
     
-    ];
+    // ];
     var service = {};
     service.GetTopRecipes = getTopRecipes;
     service.GetRecipesByQuery = getRecipesByQuery;

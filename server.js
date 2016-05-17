@@ -54,6 +54,8 @@ app.use('/app/models/', express.static(__dirname + '/app/models'));
 require('./app/routes/nerdRoute')(app); // configure our routes
 require('./app/routes/userRoute')(app); // configure our routes
 require('./app/routes/favoriteRoute')(app); // configure our routes
+//core ui route
+require('./routes')(app); // configure our routes
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

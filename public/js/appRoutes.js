@@ -28,7 +28,7 @@
          .when('/profile', {
             templateUrl: 'views/profileView.html'
         })
-         .when('/searchResult', {
+         .when('/searchResult/:input', {
             templateUrl: 'views/searchResultView.html'
         })
          
