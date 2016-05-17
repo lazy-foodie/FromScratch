@@ -6,10 +6,7 @@ var	Schema = mongoose.Schema;
 // define our user model
 var UserSchema = new Schema(
 	{
-		created: {
-			type: Date,
-			default: Date.now
-		},
+		userId: String,
 	    firstName: {
 	    	type: String,
 	    	default: '',
@@ -26,7 +23,8 @@ var UserSchema = new Schema(
 	    	default: false,
 	    },
 	    favorites: [{
-	        recipeId: String,
+	    	favoriteId: String,
+	        yummlyId: String,
 	        imageUrl: String,
 	        name: String
 	    }]

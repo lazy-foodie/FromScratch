@@ -5,13 +5,14 @@ var Schema = mongoose.Schema;
 
 var FavoriteSchema = new Schema(
 	{
+		favoriteId: String,
 		created: {
 			type: Date,
 			default: Date.now
 		},
 	    name: String,
 	    description: String,
-	    recipeId: {
+	    yummlyId: {
 	    	type: String,
 	    	default: '',
 	    	required: 'recipe id cannot be blank'
