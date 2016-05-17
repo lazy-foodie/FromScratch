@@ -1,7 +1,10 @@
 
 'use strict';
 
-angular.module('RecipeService', []).factory('RecipeService', ['$http', function($http) {
+angular.module('RecipeService', []).factory('RecipeService', ['$http', '$q', function($http, $q) {
+    /*****************************************/
+    /* Configure yummly auth and url. This will be moved to config file later on */
+    /*****************************************/      
     var yummlyApiUrl= "https://api.yummly.com/v1/api/recipe";
     var yummlyId = "f0e69f2b";
     var yummlyKey = "805686b7d91a6de3510c1c7be77c7b4e";
@@ -9,155 +12,63 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', function(
     var yummlySearchUrl = yummlyApiUrl + "?" + authentication + "&q=";
     var yummlyGetUrl = yummlyApiUrl + "/";
 
-    var recipes = [{
-      "url": "https://lh3.googleusercontent.com/nJplGzIVN_M5vplJPPlaujuPtirBefbCkQWbknOAtrpkxWrRHzvOWA1rxENELor9Chld3wYEfkaQlPFJspfOKA=s200-c",
-      "id": "Flat-Belly-Detox-water-1606683",
-      "name": "Flat Belly Detox water"
-     
-    },
-    {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-    {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-    {
-        "id": "Guacamole-1601887",
-      "url": "https://lh3.googleusercontent.com/QuZPWUWgrbHo7OZ3u_lEd_XVjH1mhYgKlykkqgneNgJ943RMWZhGdwzycWc24hWKqrlj1HC4j9Ry4BJwtyydqA=s200-c",
-      "recipeName": "Guacamole",
-    },
-        {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-            {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-    {
-      "url": "https://lh3.googleusercontent.com/nJplGzIVN_M5vplJPPlaujuPtirBefbCkQWbknOAtrpkxWrRHzvOWA1rxENELor9Chld3wYEfkaQlPFJspfOKA=s200-c",
-      "id": "Flat-Belly-Detox-water-1606683",
-      "name": "Flat Belly Detox water"
-     
-    },
-    
-    {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-            {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    },
-    {
-      "url": "https://lh3.googleusercontent.com/nJplGzIVN_M5vplJPPlaujuPtirBefbCkQWbknOAtrpkxWrRHzvOWA1rxENELor9Chld3wYEfkaQlPFJspfOKA=s200-c",
-      "id": "Flat-Belly-Detox-water-1606683",
-      "name": "Flat Belly Detox water"
-     
-    },
-    {
-      "url": "https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c",
-      "id": "Guacamole-1601887",
-      "name": "Guacamole"   
-    }
-    
-    ];
+    /*****************************************/
+    /* Initialize public services */
+    /*****************************************/  
     var service = {};
     service.GetTopRecipes = getTopRecipes;
     service.GetRecipesByQuery = getRecipesByQuery;
     service.GetRecipeById = getRecipeById;
-    service.GetTestData = getTestData;
 
-    return service;
+    return service; // return all services provided by RecipeService
 
+
+    /*****************************************/
+    /* Helper private methods */
+    /*****************************************/
+
+    /* Get some recipes from Yummly, used for home page*/
     function getTopRecipes() {
-//      var url = yummlySearchUrl + "&requirePictures=true" + "onion+soup
-// &maxResult=12";
-//       var test =  $http.get(url);
-        return recipes;
+        var url = "http://api.yummly.com/v1/api/recipes?_app_id=d6f2e548&_app_key=0ef41e85e08ae10a1015801376315497&&requirePictures=true&maxResult=12";
+        return $http.get(url).then(handleSuccess, handleError);
     }
 
-    function getRecipesByQuery() {
-//      var url = yummlySearchUrl + "&requirePictures=true" + "onion+soup
-// &maxResult=10&start=10";
-//       return $http.get(url).matches;      
+    /* Get recipes from Yummly based off query, used for search recipes*/
+    function getRecipesByQuery(query) {
+     var url = yummlySearchUrl + "&requirePictures=true" + query + "maxResult=10";
+      return $http.get(url).then(handleSuccess, handleError);      
     }
 
+    /* Calling yummly to get a recipe by Id, used for a recipe detail*/
     function getRecipeById(recipeId) {
-      var url = yummlyGetUrl +  recipeId + "?" + authentication;
-      return $http.get(url);
+        var url = yummlyGetUrl +  recipeId + "?" + authentication;
+        return $http.get(url).then(handleSuccess, handleError);
     }
 
-    function getTestData() {
-      var url = "https://api.mongolab.com/api/1/databases/angularjs-intro/collections/users?apiKey=terrPcifZzn01_ImGsFOIZ96SwvSXgN9";
-      return $http.get(url).then( handleSuccess, handleError);
-    }
-
+    /*****************************************/
+    /* Helper private methods for error handling */
+    /*****************************************/
     function handleError( response ) {
-      // The API response from the server should be returned in a
-      // nomralized format. However, if the request was not handled by the
-      // server (or what not handles properly - ex. server error), then we
-      // may have to normalize it on our end, as best we can.
-      if (
-          ! angular.isObject( response.data ) ||
-          ! response.data.message
-          ) {
-          return( $q.reject( "An unknown error occurred." ) );
-      }
-      // Otherwise, use expected error message.
-      return( $q.reject( response.data.message ) );
+        if (
+            ! angular.isObject( response.data ) ||
+            ! response.data.message
+            ) 
+        {
+            return( $q.reject( "An unknown error occurred." ) );
+        }
+            // Otherwise, use expected error message.
+            return( $q.reject( response.data.message ) );
     }
     // I transform the successful response, unwrapping the application data
     // from the API response payload.
     function handleSuccess( response ) {
-      return( response );
+      // return( response );
+        if (typeof response.data === 'object') {
+            return response.data;
+        } else {
+            // invalid response
+            return $q.reject(response.data);
+        }
     }
-
-//            var url = yummlySearchUrl + "&requirePictures=true" + "onion+soup
-// &maxResult=10&start=10";
-//       return $http.get(url);
 }]);
 
-
-// angular.module('NerdService', []).factory('NerdService', function($http, $q) {
-//     return({
-//         getAllRecipes: getAllRecipes
-//     });   
-
-//     function getAllRecipes() {
-//         var request = $http({
-//             method: "get",
-//             url: "api/toprankedrecipes",
-//         });
-//         return( request.then( handleSuccess, handleError ) );   
-//     }   
-
-//     function handleError( response ) {
-//         // The API response from the server should be returned in a
-//         // nomralized format. However, if the request was not handled by the
-//         // server (or what not handles properly - ex. server error), then we
-//         // may have to normalize it on our end, as best we can.
-//         if (
-//             ! angular.isObject( response.data ) ||
-//             ! response.data.message
-//             ) {
-//             return( $q.reject( "An unknown error occurred." ) );
-//         }
-//         // Otherwise, use expected error message.
-//         return( $q.reject( response.data.message ) );
-//     }
-//     // I transform the successful response, unwrapping the application data
-//     // from the API response payload.
-//     function handleSuccess( response ) {
-//         return( response.data );
-//     }
-
-// });
