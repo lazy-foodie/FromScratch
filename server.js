@@ -23,6 +23,8 @@ var db;
 mongoose.connect(dbUrl.url, (err, database) => {
   if (err) return console.log(err)
   db = database
+    console.log("successfully connect to mongodb ");
+
   // start app ===============================================
 // startup our app at http://localhost:8080
 app.listen(port);               
