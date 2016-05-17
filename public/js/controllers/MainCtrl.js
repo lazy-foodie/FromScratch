@@ -1,22 +1,40 @@
-angular.module('MainCtrl', []).controller('MainController',
-	function($scope,  $routeScope, RecipeService) {
-	    $scope.tagline = 'Comming Soon... :)';
-	    //$scope.input = 	$routeParams.input;
-		$scope.getTopRecipes = function() {
-			var recipes = RecipeService.GetTopRecipes();
-			$scope.recipes = recipes;
-			//$scope.makecallURL = 
-		};
-		$scope.searchRecipes = function () {
-		   getRecipesByQuery();
-		  // alert($scope.input);
-		   //window.location = "/searchResult/"+ $scope.input;
-	    }
 
-	    function getRecipesByQuery() {
-	    	alert($scope.input);
-	    	RecipeService.GetRecipesByQuery($scope.input);
-	        $scope.searchQuery = "";
-	    }
+angular.module('MainCtrl', []).controller('MainController',function($scope,  $rootScope, $http, RecipeService) {
+    /*****************************************/
+    /* Initialze variables */
+    /*****************************************/
+	$scope.recipes = [];
+	
+	/*****************************************/
+	/* Public methods */
+	/*****************************************/
+	$scope.getTopRecipes = function() {
+		getTopRecipes();
+
+	};
+	$scope.searchRecipes = function () {
+		getRecipesByQuery();
+    };
+
+    /*****************************************/
+    /* Helper private methods */
+    /*****************************************/
+    function getTopRecipes() {
+    	RecipeService.GetTopRecipes()
+		.then(function(data) {
+			$scope.recipes = data.matches;
+		}, function(error) {
+			console.log('Error getting top recipes from yummly: ' + error);
+		})	
+    }
+    function getRecipesByQuery() {
+        RecipeService.GetRecipesByQuery($scope.searchQuery)
+		.then(function(data) {
+			$scope.recipes = data.matches;
+			$scope.searchQuery = "";
+		}, function(error) {
+			console.log('Error getting top recipes from yummly: ' + error);
+		})	
+    };
 	}
 );
