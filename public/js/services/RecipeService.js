@@ -79,10 +79,10 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', function(
     return service;
 
     function getTopRecipes() {
-      return recipes;
 //      var url = yummlySearchUrl + "&requirePictures=true" + "onion+soup
-// &maxResult=10&start=10";
-//       return $http.get(url).matches;
+// &maxResult=12";
+//       var test =  $http.get(url);
+        return recipes;
     }
 
     function getRecipesByQuery() {
@@ -99,6 +99,7 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', function(
     function getTestData() {
       var url = "https://api.mongolab.com/api/1/databases/angularjs-intro/collections/users?apiKey=terrPcifZzn01_ImGsFOIZ96SwvSXgN9";
       return $http.get(url).then( handleSuccess, handleError);
+    }
 
     function handleError( response ) {
       // The API response from the server should be returned in a
@@ -123,8 +124,6 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', function(
 //            var url = yummlySearchUrl + "&requirePictures=true" + "onion+soup
 // &maxResult=10&start=10";
 //       return $http.get(url);
-
-    }
 }]);
 
 

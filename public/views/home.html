@@ -26,29 +26,14 @@
     <!-- START PHOTO GALERY -->
     <div class="container pad-lr-0 container-spl">
         <h3 class="panel-heading container-spl title">Top 10 Rated Recipes</h3>
-        <div class="container gallery" ng-repeat="recipe in recipes">
-            <span  ng-switch="$index % 4">
-                <div class="row" ng-switch-when="0">
-                    <div class="col-sm-3 photo">
+        <div class="container gallery" >
+            <span >
+                <div class="row" >
+                    <div class="col-sm-3 photo" ng-repeat="recipe in recipes">
                         <a href="/recipes/{{recipe.id}}" class="thumbnail">
-                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
+                            <img title="{{recipe.recipeName}}" ng-src="{{recipe.imageUrlsBySize[90]}}" class="img-responsive">
                         </a>
-                    </div>
-                    <div class="col-sm-3 photo">
-                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
-                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
-                        </a>
-                    </div>
-                    <div class="col-sm-3 photo">
-                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
-                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
-                        </a>
-                    </div>
-                    <div class="col-sm-3 photo">
-                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
-                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
-                        </a>
-                    </div>
+                    </div>                
                 </div>
             </span>
         </div>
