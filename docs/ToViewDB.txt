@@ -1,0 +1,4 @@
+To Start DB
+
+mongod -port 3000 
+mongo --port 3000 -u dbAdmin -p lazyFoodie --authenticationDatabase admin

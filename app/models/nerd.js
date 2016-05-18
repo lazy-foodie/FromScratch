@@ -7,3 +7,5 @@ var mongoose = require('mongoose');
 module.exports = mongoose.model('Nerd', {
     name : {type : String, default: ''}
 });
+
+console.log('nerd model has been created');

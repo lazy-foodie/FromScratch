@@ -1,15 +1,16 @@
-angular.module('NerdService', []).factory('NerdService', function($http, $q) {
+angular.module('FavRecipeService', []).factory('FavRecipeService', function($http, $q) {
 
-    var baseUrl = "api/nerds";
-    var nerService = {};
-    nerService.GetTestData = getTestData;
+    var baseUrl = "api/favorites";
+    var favRecipeService = {};
+    favRecipeService.GetTestData = getTestData;
 
-    return nerService;
+    return favRecipeService;
 
     function getTestData () {
         var url = baseUrl;
         return $http.get(url).then(handleSuccess, handleError);
     }
+
 
     function handleError( response ) {
         if (

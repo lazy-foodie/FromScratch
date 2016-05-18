@@ -7,5 +7,10 @@ angular.module(
 	'MainCtrl', 
 	'NerdService', 
 	'RecipeService',
-	'UserCtrl', 'RecipeCtrl', 'FavoriteRecipesCtrl','SearchResultCtrl'
+	'UserCtrl', 
+	'UserService', 
+	'RecipeCtrl', 
+	'FavRecipeCtrl',
+	'FavRecipeService',
+	'SearchResultCtrl'
 ]);

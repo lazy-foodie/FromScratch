@@ -1,14 +1,19 @@
-angular.module('NerdService', []).factory('NerdService', function($http, $q) {
+angular.module('UserService', []).factory('UserService', function($http, $q) {
+    var baseUrl = "/api/users";
+    var userService = {};
+    userService.GetTestData = getTestData;
+    userService.GetUserById = getUserById;
 
-    var baseUrl = "api/nerds";
-    var nerService = {};
-    nerService.GetTestData = getTestData;
-
-    return nerService;
+    return userService;
 
     function getTestData () {
         var url = baseUrl;
         return $http.get(url).then(handleSuccess, handleError);
+    }
+
+        function getUserById (id) {
+            var url = '/api/users/' + id;
+            return $http.get(url).then(handleSuccess, handleError);
     }
 
     function handleError( response ) {
@@ -34,5 +39,3 @@ angular.module('NerdService', []).factory('NerdService', function($http, $q) {
         }
     }
 });
-
-
