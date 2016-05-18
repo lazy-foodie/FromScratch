@@ -13,7 +13,6 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
     $scope.hostedLargeUrl;
     $scope.hostedSmallUrl;
     $scope.recipe_id = $routeParams.recipeId;
-
     /*****************************************/
     /* Public methods */
     /*****************************************/
@@ -25,7 +24,7 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
     /* Helper private methods */
     /*****************************************/
     function getRecipeDetail() {
-        RecipeService.GetRecipeById($scope.recipe_id)
+        RecipeService.GetRecipeById($routeParams.recipeId)
         .then(function(recipeDetail) {
             $scope.totalTime = recipeDetail.totalTime;
             $scope.recipeName = recipeDetail.name;
@@ -38,6 +37,7 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
             $scope.images = recipeDetail.images;
             $scope.hostedLargeUrl = $scope.images[0].hostedLargeUrl;
             $scope.hostedSmallUrl = $scope.images[0].hostedSmallUrl;
+            $routeParams.recipeId = '';
         }, function(error) {
             console.log('Error getting top recipes from yummly: ' + error);
         })      

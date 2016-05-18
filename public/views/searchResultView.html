@@ -1,35 +1,36 @@
 <!-- Using global controller 'MainContrller' -->
-<div class = 'container pad-lr-0 container-spl' id="home" ng-controller ='MainController' ng-init='getTopRecipes()'>
+<div class = 'container pad-lr-0' id="searchResult" ng-controller ='SearchResultController' ng-init='searchRecipes()'>
+<div class="container pad-lr-0 container-spl"></div>
+
     <!-- START SEARCH FORM -->
-    <div class="container container-spl pad-t-15">       
+    <div class="container container-spl">       
+        <!-- HEADER SECTION -->
+        <div class ='row alignCenter title'>
+            <h2 alignCenter>Search Area</h2>
+        </div>
         <!-- SEARCH AREA -->        
         <div class ='row container-spl'>
-           <<form class="form" role="form" id="formSearch" method="post">
+            <form action="" method="">
                 <div class="input-group search-bar">
-                   <!-- <input type="search" ng-model="searchQuery" ng-model-options="{ debounce: 800 }" class="form-control" placeholder="Enter your ingredients" autofocus /> -->
-                   <input type="text" ng-model="search.Query" ng-model-options="{ debounce: 800 }" class="form-control" placeholder="Enter your ingredients" autofocus />
+                    <input type="text" ng-model="search.Query" ng-model-options="{ debounce: 800 }" class="form-control" placeholder="Enter your ingredients" autofocus />
                     <span class="input-group-btn bar-style">
-                    <a href="/searchResult/{{search.Query}}" > 
-                        <button type="button" class="btn btn-default">
-                            <i class="glyphicon glyphicon-search"></i> 
+                        <button type="button" class="btn btn-default" ng-click="searchRecipes()">
+                            <i class="glyphicon glyphicon-search"></i>
                         </button>
-                    </a>
                     </span>
                 </div>            
-           </form> 
+            </form>
         </div>  
-        <div class ='clear-fixed'></div>
-
         <!-- END SEARCH AREA -->                
     </div> 
     <!-- END SEARCH FORM -->
     <!-- START PHOTO GALERY -->
     <div class="container pad-lr-0 container-spl">
-        <h3 class="panel-heading title">Top 10 Rated Recipes</h3>
+        <h3 class="panel-heading title">Search Results</h3>
        <!--  <div class="container" >
             <span > -->
                 <div class="row container-spl gallery" >
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 photo pad-t-10" ng-repeat="recipe in recipes">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 photo pad-t-10" ng-repeat="recipe in searchRes">
                         <a href="/recipes/{{recipe.id}}" class="thumbnail alignCenter">
                             <img title="{{recipe.recipeName}}" ng-src="{{recipe.imageUrlsBySize[90]}}" class="img-responsive"> 
                             <i>{{recipe.recipeName}}</i>
