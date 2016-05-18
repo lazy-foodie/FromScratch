@@ -18,7 +18,7 @@ var UserSchema = new Schema( {
             },
       { collection: 'users' }
 );
-var User = mongoose.model('User', UserSchema);
+User = mongoose.model('User', UserSchema);
 
 console.log('user model has been created');
 
