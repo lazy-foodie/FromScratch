@@ -2,7 +2,7 @@
 var path = require('path'),
     mongoose = require('mongoose')
 // grab the favorite model we just created
-    Favorite = require(path.resolve('./app/models/favorite.server.model'));
+    Favorite = require(path.resolve('./app/models/favoriteRecipe'));
 
     module.exports = function(app) {
 

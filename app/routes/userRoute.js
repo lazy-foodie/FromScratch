@@ -2,7 +2,7 @@
 var path = require('path'),
     mongoose = require('mongoose')
 // grab the user model we just created
-    User = require(path.resolve('./app/models/user.server.model'));
+    User = require(path.resolve('./app/models/user'));
 
     module.exports = function(app) {
 

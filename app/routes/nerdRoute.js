@@ -2,7 +2,7 @@
 var path = require('path'),
     mongoose = require('mongoose')
 // grab the favorite model we just created
-    Nerd = require(path.resolve('./app/models/nerd.server.model'));
+    Nerd = require(path.resolve('./app/models/nerd'));
 
     module.exports = function(app) {
 
