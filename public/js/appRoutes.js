@@ -28,7 +28,8 @@
          .when('/profile', {
             templateUrl: 'views/profileView.html'
         })
-         .when('/searchResult/:input', {
+        .when('/searchResult/:searchQuery', {
+        // .when('/searchResult', {
             templateUrl: 'views/searchResultView.html'
         })
          

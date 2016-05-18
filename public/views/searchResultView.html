@@ -1,16 +1,18 @@
 <!-- Using global controller 'MainContrller' -->
-<div class = 'container pad-lr-0' id="searchResult" ng-controller ='SearchResultController'>
+<div class = 'container pad-lr-0' id="searchResult" ng-controller ='SearchResultController' ng-init='searchRecipes()'>
+<div class="container pad-lr-0 container-spl"></div>
+
     <!-- START SEARCH FORM -->
     <div class="container container-spl">       
         <!-- HEADER SECTION -->
         <div class ='row alignCenter title'>
-            <h1 alignCenter>Search Form Area</h1>
+            <h2 alignCenter>Search Area</h2>
         </div>
         <!-- SEARCH AREA -->        
         <div class ='row container-spl'>
             <form action="" method="">
                 <div class="input-group search-bar">
-                    <input type="text" ng-model="searchQuery" ng-model-options="{ debounce: 800 }" class="form-control" placeholder="Enter your ingredients" autofocus />
+                    <input type="text" ng-model="search.Query" ng-model-options="{ debounce: 800 }" class="form-control" placeholder="Enter your ingredients" autofocus />
                     <span class="input-group-btn bar-style">
                         <button type="button" class="btn btn-default" ng-click="searchRecipes()">
                             <i class="glyphicon glyphicon-search"></i>
@@ -24,33 +26,19 @@
     <!-- END SEARCH FORM -->
     <!-- START PHOTO GALERY -->
     <div class="container pad-lr-0 container-spl">
-        <h3 class="panel-heading container-spl title">Search Result</h3>
-        <div class="container gallery" ng-repeat="recipe in recipes">
-            <span  ng-switch="$index % 4">
-                <div class="row" ng-switch-when="0">
-                    <div class="col-sm-3 photo">
-                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
-                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
+        <h3 class="panel-heading title">Search Results</h3>
+       <!--  <div class="container" >
+            <span > -->
+                <div class="row container-spl gallery" >
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 photo pad-t-10" ng-repeat="recipe in searchRes">
+                        <a href="/recipes/{{recipe.id}}" class="thumbnail alignCenter">
+                            <img title="{{recipe.recipeName}}" ng-src="{{recipe.imageUrlsBySize[90]}}" class="img-responsive"> 
+                            <i>{{recipe.recipeName}}</i>
                         </a>
-                    </div>
-                    <div class="col-sm-3 photo">
-                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
-                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
-                        </a>
-                    </div>
-                    <div class="col-sm-3 photo">
-                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
-                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
-                        </a>
-                    </div>
-                    <div class="col-sm-3 photo">
-                        <a href="/recipes/{{recipe.id}}" class="thumbnail">
-                            <img title="{{recipe.name}}" ng-src="{{recipe.url}}" class="img-responsive">
-                        </a>
-                    </div>
+                    </div>                
                 </div>
-            </span>
-        </div>
+           <!--  </span>
+        </div> -->
     </div>
     <!-- END PHOTO GALERY -->
 </div>

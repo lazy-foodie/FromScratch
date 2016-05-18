@@ -1,21 +1,15 @@
-angular.module('SearchResultCtrl', []).controller('SearchResultController',
-	function($scope,  $routeParams, RecipeService) {
-	    $scope.tagline = 'Comming Soon... :)';	
-		$scope.getTopRecipes = function() {
-			var recipes = RecipeService.GetTopRecipes();
-			$scope.recipes = recipes;
-			//$scope.makecallURL = 
-		};
-		$scope.searchRecipes = function () {
-		    getRecipesByQuery();
-		    window.location = "/searchResult";
-	    }
+angular.module('SearchResultCtrl', []).controller('SearchResultController', function($scope, $routeParams, $rootScope, RecipeService) {
 
-	    function getRecipesByQuery() {
-	    	$scope.searchQuery = $routeParams.searchQuery;
-	    	alert($scope.searchQuery);
-	    	RecipeService.GetRecipesByQuery($scope.searchQuery);
-	        $scope.searchQuery = "";
-	    }
+	    $scope.searchRecipes = function () {
+
+         RecipeService.GetRecipesByQuery($routeParams.searchQuery)
+		.then(function(data) {
+			$scope.searchRes = data.matches;
+			//alert(searchRes);
+		}, function(error) {
+			alert('Error getting top recipes from yummly: ' + error);
+		})
+
+      };
 	}
 );

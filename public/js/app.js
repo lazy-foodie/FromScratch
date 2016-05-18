@@ -3,9 +3,9 @@ angular.module(
 	'lazyFoodieApp', 
 	['ngRoute', 
 	'appRoutes', 
-	'MainCtrl', 
 	'NerdCtrl', 
+	'MainCtrl', 
 	'NerdService', 
 	'RecipeService',
-	'UserCtrl', 'RecipeCtrl', 'FavoriteRecipesCtrl'
+	'UserCtrl', 'RecipeCtrl', 'FavoriteRecipesCtrl','SearchResultCtrl'
 ]);
