@@ -5,21 +5,20 @@ var Schema = mongoose.Schema;
 
 
 var UserSchema = new Schema( {
-            userId: Number,
             firstName: String,
             lastName: String,
             email: String,
             developer: Boolean,
             favorites: [ {  
                   recipeId : Number,
-                  url: String,
+                  imageUrl: String,
                   name: String,
             } ]
             },
       { collection: 'users' }
 );
-User = mongoose.model('User', UserSchema);
+var User = mongoose.model('User', UserSchema);
+
+module.exports = User;
 
 console.log('user model has been created');
-
-module.exports = ('User', UserSchema);

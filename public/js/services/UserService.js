@@ -1,8 +1,8 @@
 angular.module('UserService', []).factory('UserService', function($http, $q) {
-
-    var baseUrl = "api/users";
+    var baseUrl = "/api/users";
     var userService = {};
     userService.GetTestData = getTestData;
+    userService.GetUserById = getUserById;
 
     return userService;
 
@@ -11,6 +11,10 @@ angular.module('UserService', []).factory('UserService', function($http, $q) {
         return $http.get(url).then(handleSuccess, handleError);
     }
 
+        function getUserById (id) {
+            var url = '/api/users/' + id;
+            return $http.get(url).then(handleSuccess, handleError);
+    }
 
     function handleError( response ) {
         if (

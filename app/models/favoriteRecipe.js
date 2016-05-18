@@ -12,6 +12,6 @@ var RecipeSchema = new Schema( {
 );
 var FavRecipe = mongoose.model('FavRecipe', RecipeSchema);
 
-console.log('favorite model has been created');
+module.exports = FavRecipe;
 
-module.exports = ('FavRecipe', RecipeSchema);
+console.log('favorite model has been created');

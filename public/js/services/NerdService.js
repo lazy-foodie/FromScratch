@@ -11,7 +11,6 @@ angular.module('NerdService', []).factory('NerdService', function($http, $q) {
         return $http.get(url).then(handleSuccess, handleError);
     }
 
-
     function handleError( response ) {
         if (
             ! angular.isObject( response.data ) ||
