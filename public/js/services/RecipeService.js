@@ -5,11 +5,11 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', '$q', fun
     /*****************************************/
     /* Configure yummly auth and url. This will be moved to config file later on */
     /*****************************************/      
-    var yummlyApiUrl= "https://api.yummly.com/v1/api/recipes";
+    var yummlyApiUrl= "https://api.yummly.com/v1/api/recipe";
     var yummlyId = "f0e69f2b";
     var yummlyKey = "805686b7d91a6de3510c1c7be77c7b4e";
     var authentication = "_app_id=" + yummlyId + "&_app_key=" + yummlyKey;
-    var yummlySearchUrl = yummlyApiUrl + "?" + authentication;
+    var yummlySearchUrl = yummlyApiUrl+"s?" + authentication;
     var yummlyGetUrl = yummlyApiUrl + "/";
 
 
@@ -30,7 +30,7 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', '$q', fun
 
     /* Get some recipes from Yummly, used for home page*/
     function getTopRecipes() {
-        var url = "http://api.yummly.com/v1/api/recipes?_app_id=d6f2e548&_app_key=0ef41e85e08ae10a1015801376315497&&requirePictures=true&maxResult=12";
+        var url = yummlySearchUrl+"&requirePictures=true&maxResult=12";
         return $http.get(url).then(handleSuccess, handleError);
     }
 
