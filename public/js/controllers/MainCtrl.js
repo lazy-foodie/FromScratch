@@ -1,18 +1,22 @@
-angular.module('MainCtrl', []).controller('MainController',function($scope,  $rootScope, $http, RecipeService) {
+
+angular.module('MainCtrl', []).controller('MainController',function($scope,  $rootScope,$routeParams, $http, RecipeService) {
+	
     /*****************************************/
     /* Initialze variables */
     /*****************************************/
 	$scope.recipes = [];
-	
 	/*****************************************/
 	/* Public methods */
 	/*****************************************/
 	$scope.getTopRecipes = function() {
+
 		getTopRecipes();
 
 	};
 	$scope.searchRecipes = function () {
-		getRecipesByQuery();
+       
+		window.location = "/searchResult/" + $scope.search.Query;
+
     };
 
     /*****************************************/
@@ -26,14 +30,6 @@ angular.module('MainCtrl', []).controller('MainController',function($scope,  $ro
 			console.log('Error getting top recipes from yummly: ' + error);
 		})	
     }
-    function getRecipesByQuery() {
-        RecipeService.GetRecipesByQuery($scope.searchQuery)
-		.then(function(data) {
-			$scope.recipes = data.matches;
-			$scope.searchQuery = "";
-		}, function(error) {
-			console.log('Error getting top recipes from yummly: ' + error);
-		})	
-    };
+
 	}
 );
