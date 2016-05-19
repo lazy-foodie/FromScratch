@@ -1,10 +1,10 @@
 // app/routes.js
 var path = require('path'),
-mongoose = require('mongoose')
+    mongoose = require('mongoose')
 // grab the favorite model we just created
-Nerd = require(path.resolve('./app/models/nerd'));
+    Nerd = require(path.resolve('./app/models/nerd'));
 
-module.exports = function(app) {
+    module.exports = function(app) {
 
         // server routes ===========================================================
         // handle things like api calls
@@ -19,6 +19,7 @@ module.exports = function(app) {
                                 // nothing after res.send(err) will execute
                 if (err)
                     res.send(err);
+
                 res.json(nerds); // return all nerds in JSON format
             });
         });

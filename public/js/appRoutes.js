@@ -17,19 +17,39 @@
         .when('/favRecipes', {
             templateUrl: 'views/favoriteRecipesView.html'
         })
+
+        // recipe detail of a recipe 
         .when('/recipes/:recipeId', {
             templateUrl: 'views/oneRecipeView.html'
         })
+
         // login page whose controller will be decided from the view
         .when('/login', {
             templateUrl: 'views/loginView.html'
         })
 
-         .when('/profile', {
+        // about page
+        .when('/about', {
+            templateUrl: 'views/aboutView.html'
+        })
+
+        // contact page
+        .when('/contact', {
+            templateUrl: 'views/contactView.html'
+        })
+
+        // register page
+        .when('/register', {
+            templateUrl: 'views/registerView.html'
+        })
+
+        // user profile page
+        .when('/profile', {
             templateUrl: 'views/profileView.html'
         })
+
+        // search for recipes page
         .when('/searchResult/:searchQuery', {
-        // .when('/searchResult', {
             templateUrl: 'views/searchResultView.html'
         })
          

@@ -1,6 +1,7 @@
 angular.module('NerdService', []).factory('NerdService', function($http, $q) {
 
-    var baseUrl = "api/nerds";
+     // base Rest API route
+    var baseUrl = "api/nerds/";
     var nerService = {};
     nerService.GetTestData = getTestData;
 
@@ -9,6 +10,26 @@ angular.module('NerdService', []).factory('NerdService', function($http, $q) {
     function getTestData () {
         var url = baseUrl;
         return $http.get(url).then(handleSuccess, handleError);
+    }
+
+    function postTestData(data) {
+        return $http({
+            method: 'POST',
+            url:  baseUrl,
+            data: data,
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+        });
+    }
+
+    function removeTestData(id) {
+        return $http({
+            method: 'DELETE',
+            url: baseUrl,
+            data: id,
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+        });
     }
 
     function handleError( response ) {

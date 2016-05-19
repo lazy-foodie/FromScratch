@@ -3,6 +3,7 @@ angular.module(
 	'lazyFoodieApp', 
 	['ngRoute', 
 	'appRoutes', 
+	'appConfig',
 	'NerdCtrl', 
 	'MainCtrl', 
 	'NerdService', 

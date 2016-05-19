@@ -1,18 +1,14 @@
 
 'use strict';
 
-angular.module('RecipeService', []).factory('RecipeService', ['$http', '$q', function($http, $q) {
+angular.module('RecipeService', []).factory('RecipeService', ['$http', '$q', 'appConfig', function($http, $q, appConfig) {
     /*****************************************/
     /* Configure yummly auth and url. This will be moved to config file later on */
     /*****************************************/      
-    var yummlyApiUrl= "https://api.yummly.com/v1/api/recipe";
-    var yummlyId = "f0e69f2b";
-    var yummlyKey = "805686b7d91a6de3510c1c7be77c7b4e";
-    var authentication = "_app_id=" + yummlyId + "&_app_key=" + yummlyKey;
-    var yummlySearchUrl = yummlyApiUrl+"s?" + authentication;
-    var yummlyGetUrl = yummlyApiUrl + "/";
-
-
+    var authentication = "_app_id=" + appConfig.yummlyId + "&_app_key=" + appConfig.yummlyKey;
+    var yummlySearchUrl = appConfig.yummlyApiUrl+"s?" + authentication;
+    var yummlyGetUrl = appConfig.yummlyApiUrl + "/";
+    
     /*****************************************/
     /* Initialize public services */
     /*****************************************/  
@@ -30,7 +26,7 @@ angular.module('RecipeService', []).factory('RecipeService', ['$http', '$q', fun
 
     /* Get some recipes from Yummly, used for home page*/
     function getTopRecipes() {
-        var url = yummlySearchUrl+"&requirePictures=true&maxResult=12";
+        var url = yummlySearchUrl+"&requirePictures=true&maxResult=24";
         return $http.get(url).then(handleSuccess, handleError);
     }
 

@@ -1,17 +1,29 @@
 angular.module('FavRecipeService', []).factory('FavRecipeService', function($http, $q) {
 
-    var baseUrl = "api/favorites";
+    
+    var baseUrl = "/api/favorites";
+
+    /*****************************************/
+    /* Initialize public services */
+    /*****************************************/  
     var favRecipeService = {};
     favRecipeService.GetTestData = getTestData;
 
     return favRecipeService;
 
+    /*****************************************/
+    /* Helper private methods */
+    /*****************************************/
+
+    // Get all favorite recipes
     function getTestData () {
         var url = baseUrl;
         return $http.get(url).then(handleSuccess, handleError);
     }
 
-
+    /*****************************************/
+    /* Helper private methods for error handling */
+    /*****************************************/
     function handleError( response ) {
         if (
             ! angular.isObject( response.data ) ||
@@ -23,10 +35,7 @@ angular.module('FavRecipeService', []).factory('FavRecipeService', function($htt
             // Otherwise, use expected error message.
             return( $q.reject( response.data.message ) );
     }
-    // I transform the successful response, unwrapping the application data
-    // from the API response payload.
     function handleSuccess( response ) {
-      // return( response );
         if (typeof response.data === 'object') {
             return response.data;
         } else {

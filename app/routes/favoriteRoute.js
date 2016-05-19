@@ -5,20 +5,24 @@ mongoose = require('mongoose')
 FavRecipe = require(path.resolve('./app/models/favoriteRecipe'));
 
 module.exports = function(app) {
-// server routes ===========================================================
-// handle things like api calls
-// authentication routes
 
-// sample api route
-             app.get('/api/favorites', function(req, res) {
-                          // use mongoose to get all nerds in the database
-                          FavRecipe.find(function(err, favorites) {
-                                       // if there is an error retrieving, send the error. 
-                                       // nothing after res.send(err) will execute
-                                       if (err) {
-                                                    res.send(err);
-                                       }
-                                       res.json(favorites); // return all nerds in JSON format
-                          });
-             });
+    /*****************************************/
+    /* Favorite API routes */
+    /*****************************************/
+
+    // Get all favorite recipes 
+    app.get('/api/favorites', function(req, res) {
+        // use mongoose to get all nerds in the database
+        FavRecipe.find(function(err, favorites) {
+            // if there is an error retrieving, send the error. 
+            // nothing after res.send(err) will execute
+            if (err) 
+              res.send(err);
+            res.json(favorites); // return all nerds in JSON format
+        });
+    });
+
+    /*****************************************/
+    /* Helper private methods */
+    /*****************************************/
 };
