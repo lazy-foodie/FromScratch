@@ -10,16 +10,23 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
     $scope.sourceSiteUrl;
     $scope.sourceRecipeUrl;
     $scope.ingredients = [];
+    $scope.images =[];
     $scope.hostedLargeUrl;
     $scope.hostedSmallUrl;
     $scope.recipe_id = $routeParams.recipeId;
+    $scope.errorMessage;
+    $scope.embedRecipeWebSource = false;
+    $scope.buttonText = 'Collapse';
     /*****************************************/
     /* Public methods */
     /*****************************************/
     $scope.getRecipeDetail = function() {
         getRecipeDetail();
     };
-
+    $scope.togleEmbedRecipeWebSource = function (){
+        $scope.embedRecipeWebSource = !$scope.embedRecipeWebSource;
+        $scope.buttonText = ($scope.buttonText === 'Collapse') ? 'Show' : 'Collapse';
+    }
     /*****************************************/
     /* Helper private methods */
     /*****************************************/
@@ -40,6 +47,7 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
             $routeParams.recipeId = '';
         }, function(error) {
             console.log('Error getting top recipes from yummly: ' + error);
+            $scope.errorMessage = 'Error getting top recipes from yummly: ' + error;
         })      
     }
 

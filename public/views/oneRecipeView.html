@@ -1,32 +1,85 @@
-<div class = 'container pad-lr-0' id="oneRecipe" ng-controller ='RecipeController' ng-init='getRecipeDetail()'>
-
-    <div class="row">
-        <div class ='col-md-6'>
-        <img src = {{hostedLargeUrl}} class ="img-responsive">
-        </div>
-        <div class ='col-md-6'>
-            <h2 alignCenter class="title">{{recipeName}}</h2>
-        </div>
-    </div>
-	<div class ='clear15'></div>
-
-
-  <!-- Default panel contents -->
-  	<div class="panel panel-default">
-  		<div class="panel-heading">Details</div>
-		<div class="panel-body">
-		   <p>Total Cooking Time: {{totalTime}}</p>
-		   <p >Rating: {{rating}} Out of 5</p>
-		   <p>Ingredient: {{ingredients}}</p>
-		   <p>Number Of Servings: {{numberOfServings}}</p>
-		</div>
+<div class = 'container pad-lr-0 container-spl' id="oneRecipe" ng-controller ='RecipeController' ng-init='getRecipeDetail()'>
+	<span style="color:red"> {{errorMessage}}</span>
+    <div class="container pad-lr-0 container-spl pad-b-15">
+	  <!-- Start Head Area -->
+	    <div class="row pad-t-10">
+	        <div class ='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+	        	<img src = {{hostedLargeUrl}} class ="img-thumbnail img-responsive">
+	        </div>
+	        <div class ='col-lg-1 col-md-1 col-sm-1 col-xs-1'></div>
+	        <div class ='col-lg-6 col-md-6 col-sm-6 col-xs-6'>
+	            <h2 class=" alignCenter well">{{recipeName}}</h2>
+	        </div>
+	        <div class ='col-lg-1 col-md-1 col-sm-1 col-xs-1'></div>
+	    </div>
+		<div class ='clear15'></div>
+	  <!-- End Head Area -->
+	  <!-- Start Recipe Details Area -->
+	    <div class="pad-t-10">
+	    	<!-- Start Recipe Details Area -->
+		  	<div class="panel panel-default" id="details">
+		  		<!-- Start Heading -->
+		  		<div class="panel-heading">
+			        <h3 class="panel-title pull-left">Details</h3>
+			    	<div class="clearfix"></div>
+			    </div>
+		  		<!-- End Heading -->	
+		  		<!-- Start Details Body -->	  			    
+				<div class="panel-body">
+				   	<dl class="dl-horizontal">
+					    <dt>Total Cooking Time:</dt>
+					    <dd>{{totalTime}}</dd>
+					    <dt>Rating:</dt>
+					    <dd>{{rating}} Out of 5</dd>
+					    <dt>Ingredients:</dt>
+					    <dd>{{ingredients}}</dd>
+					    <dt>Number Of Servings:</dt>
+					    <dd>{{numberOfServings}}</dd>
+				  	</dl>   
+				</div>
+		  		<!-- End Details Body -->	  			    			
+			</div>
+			<!-- End Recipe Details Area -->
+	    	<!-- Start Recipe Source Area -->
+		  	<div class="panel panel-default" id="source">
+		  		<!-- Start Heading -->	  		
+			    <div class="panel-heading">
+			        <h3 class="panel-title pull-left">Source: {{sourceDisplayName}}</h3>
+			        <button type="button" class="btn btn-default pull-right" ng-click="togleEmbedRecipeWebSource()">{{buttonText}} Web Source</button>
+			        <div class="clearfix"></div>
+			    </div>
+		  		<!-- End Heading -->	
+		  		<!-- Start Source Body -->	  			    	    
+			  	<div class="panel-body" >
+		  			<!-- Start Source Link & Info -->	  		   		
+			  		<div class="row container-spl"> 
+						<dl class="dl-horizontal">
+						    <dt>Source Site:</dt>
+						    <dd>
+						    	<a href={{sourceSiteUrl}}>{{sourceSiteUrl}}</a>
+						    </dd>
+							<dl class="dl-horizontal">
+						    <dt>Source Link:</dt>
+						    <dd>
+						    	<a href={{sourceRecipeUrl}}>{{sourceRecipeUrl}}</a>
+						    </dd>
+				  		</dl>   
+					</div>	
+		  			<!-- End Source Link & Info -->	  
+		  			<!-- Start Embed Web Source -->						
+		  			<div class="row container-spl" ng-hide='embedRecipeWebSource'>
+		                <div class="embed-responsive embed-responsive-16by9">
+	  	                 	<object data={{sourceRecipeUrl}} class='embed-responsive-item embedWebPage'> 
+		                    	<embed src={{sourceRecipeUrl}} class='embed-responsive-item embedWebPage'> </embed> Error: Embedded data could not be displayed. 
+		                 	</object>
+	  					</div>
+		            </div>
+		            <!-- Start Embed Web Source -->					
+		        </div>
+		  		<!-- End Source Body -->	  			    	    
+		   </div>
+	    	<!-- End Recipe Source Area -->	   
+		</div>  
+	   <!-- End Recipe Details Area -->
 	</div>
-
-  	<div class="panel panel-default">
-	  	<div class="panel-heading">Source: {{sourceDisplayName}}</div>
-	  	<div class="panel-body">
-	   		<p> Source Site: {{sourceSiteUrl}} </p>
-	   		<p> Source Link: {{sourceRecipeUrl}} </p>
-	  	</div>
-   </div>
 </div>

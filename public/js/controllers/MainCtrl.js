@@ -1,5 +1,5 @@
 
-angular.module('MainCtrl', []).controller('MainController',function($scope,  $rootScope,$routeParams, $http, RecipeService) {
+angular.module('MainCtrl', []).controller('MainController',function($scope,  $rootScope,$routeParams, $http, RecipeService, $location) {
 	
     /*****************************************/
     /* Initialze variables */
@@ -14,9 +14,7 @@ angular.module('MainCtrl', []).controller('MainController',function($scope,  $ro
 
 	};
 	$scope.searchRecipes = function () {
-       
-		window.location = "/searchResult/" + $scope.search.Query;
-
+		searchRecipes();
     };
 
     /*****************************************/
@@ -31,5 +29,10 @@ angular.module('MainCtrl', []).controller('MainController',function($scope,  $ro
 		})	
     }
 
-	}
-);
+    function searchRecipes() {
+    	var url = '/searchResult/' + $scope.search.Query;
+		$location.path(url);
+    }
+
+});
+

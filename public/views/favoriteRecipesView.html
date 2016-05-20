@@ -1,13 +1,38 @@
-<div class = 'container pad-lr-0' id="favorite" ng-controller ='FavoriteRecipesController'>
-    <!-- START SEARCH FORM -->
-    <div class="container container-spl">       
-        <!-- HEADER SECTION -->
+<div class = 'container pad-lr-0' id="favorite" ng-controller ='FavoriteRecipesController' ng-init = "GetTestData()">
+    <div class="container container-spl pad-b-15">       
+        <!-- TEST SECTION -->
         <div class ='row alignCenter title'>
             <h1 alignCenter>My Favorite Recipes</h1>
             <p>{{ tagline }}</p>
         </div>
-            <div class="container pad-lr-0 container-spl title" ng-controller ='FavoriteRecipesController' ng-init = "GetTestData()">
-        <h3 class="panel-heading container-spl ">Test data</h3>
-        <p>{{ testData }}</p>
     </div>
+    <div class="container pad-lr-0 container-spl">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title pull-left">Test Data</h3>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-body pad-lr-0 container-spl">
+                <div class="container alightCenter" ng-repeat="data in testData">
+                    <dl class="dl">
+                        <dt>Fav Object: </dt>
+                        <dd class="text-justify well">{{ data }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class = 'clear15'></div>
+        <!-- START PHOTO GALERY -->
+        <div class="container pad-lr-0 container-spl pad-b-15">
+            <div class="row container-spl gallery" >
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 photo pad-t-10" ng-repeat="recipe in testData">
+                    <a href="/recipes/{{recipe._id}}" class="thumbnail alignCenter">
+                        <img title="{{recipe.name}}" ng-src="{{recipe.imageUrl}}" class="img-thumbnail img-responsive"> 
+                        <h6>{{recipe.name}}</h6>
+                    </a>
+                </div>                
+            </div>
+        </div>
+    </div>    <!-- END PHOTO GALERY -->
 </div>

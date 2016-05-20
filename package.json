@@ -1,11 +1,15 @@
 {
   "name": "lazy-foodie",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": " A app that search for recipes to help you recycle food",
   "main": "server.js",
   "author": {
-    "name": "lazyfoodie",
+    "name": "Daniella Li, Bich Diep, Emma Ogilvie",
     "email": ""
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha"
   },
   "dependencies": {
     "body-parser": "~1.4.2",

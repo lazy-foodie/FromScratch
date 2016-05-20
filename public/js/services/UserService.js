@@ -1,21 +1,34 @@
 angular.module('UserService', []).factory('UserService', function($http, $q) {
-    var baseUrl = "/api/users";
+    // base Rest API route
+    var baseUrl = "api/users/";
+    /*****************************************/
+    /* Initialize public services */
+    /*****************************************/      
     var userService = {};
     userService.GetTestData = getTestData;
     userService.GetUserById = getUserById;
 
     return userService;
 
+
+    /*****************************************/
+    /* Helper private methods */
+    /*****************************************/
+
+    // Get all users
     function getTestData () {
         var url = baseUrl;
         return $http.get(url).then(handleSuccess, handleError);
     }
 
         function getUserById (id) {
-            var url = '/api/users/' + id;
+            url = 'api/users/' + id;
             return $http.get(url).then(handleSuccess, handleError);
     }
 
+    /*****************************************/
+    /* Helper private methods for error handling */
+    /*****************************************/
     function handleError( response ) {
         if (
             ! angular.isObject( response.data ) ||
@@ -27,10 +40,8 @@ angular.module('UserService', []).factory('UserService', function($http, $q) {
             // Otherwise, use expected error message.
             return( $q.reject( response.data.message ) );
     }
-    // I transform the successful response, unwrapping the application data
-    // from the API response payload.
+
     function handleSuccess( response ) {
-      // return( response );
         if (typeof response.data === 'object') {
             return response.data;
         } else {
