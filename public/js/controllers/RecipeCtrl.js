@@ -16,17 +16,17 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
     $scope.recipe_id = $routeParams.recipeId;
     $scope.errorMessage;
     $scope.embedRecipeWebSource = false;
-    $scope.buttonText = 'Collapse';
+    $scope.buttonText = 'Go To';
     /*****************************************/
     /* Public methods */
     /*****************************************/
     $scope.getRecipeDetail = function() {
         getRecipeDetail();
     };
-    $scope.togleEmbedRecipeWebSource = function (){
-        $scope.embedRecipeWebSource = !$scope.embedRecipeWebSource;
-        $scope.buttonText = ($scope.buttonText === 'Collapse') ? 'Show' : 'Collapse';
-    }
+    // $scope.togleEmbedRecipeWebSource = function (){
+    //     $scope.embedRecipeWebSource = !$scope.embedRecipeWebSource;
+    //     $scope.buttonText = ($scope.buttonText === 'Collapse') ? 'Show' : 'Collapse';
+    // }
     /*****************************************/
     /* Helper private methods */
     /*****************************************/

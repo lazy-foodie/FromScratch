@@ -137,16 +137,15 @@ body {
 footer {
     background-color: #B75050;
     color: #fff;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     font-size: 1.8vh;
 }
 
 .footer {
-      margin-bottom:0px;
-
-    margin-top: 8px;
+    margin-bottom:0px;
+    margin-top: 5px;
     padding-right: 0px;
 }
 

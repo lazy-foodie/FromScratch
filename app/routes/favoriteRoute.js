@@ -21,7 +21,6 @@ module.exports = function(app) {
             res.json(favorites); // return all nerds in JSON format
         });
     });
-
     /*****************************************/
     /* Helper private methods */
     /*****************************************/

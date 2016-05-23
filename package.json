@@ -1,28 +1,49 @@
 {
   "name": "lazy-foodie",
   "version": "1.0.0",
-  "description": " A app that search for recipes to help you recycle food",
+  "description": " An app that search for recipes to help you recycle food",
   "main": "server.js",
-  "author": {
-    "name": "Daniella Li, Bich Diep, Emma Ogilvie",
-    "email": ""
-  },
+  "author": "LazyFoodie Team",
+  "contributors": [
+    {
+      "name": "Daniella Li",
+      "email": ""
+    },
+    {
+      "name": "Emma Ogilvie",
+      "email": ""
+    },
+    {
+      "name": "Bich Diep",
+      "email": ""
+    }
+  ],
   "scripts": {
     "start": "node server.js",
-    "test": "mocha"
+    "test": "mocha",
+    "watch": "nodemon server.js --ignore sessions",
+    "make-certificate": "openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365",
+    "remove-passphrase": "openssl rsa -in key.pem -out newkey.pem && mv newkey.pem key.pem"
   },
   "dependencies": {
-    "body-parser": "~1.4.2",
+    "body-parser": ">=0.0.0",
+    "connect": "^3.4.1",
     "bower": "^1.7.9",
     "express": "~4.5.1",
-    "method-override": "^2.3.5",
-    "mongoose": "^4.4.14",
-    "morgan": "~1.0.0",
-    "yummly": "^0.2.4"
+    "express-session":">=0.0.0",
+    "http":">=0.0.0",
+    "method-override": ">=0.0.0",
+    "mongoose": ">=4.4.14",
+    "morgan": ">=0.0.0",
+    "util": ">= 0.0.0", 
+    "mongodb-uri" : "*",
+    "connect-mongo" : "*",
+    "crypto" : "*"  
   },
   "devDependencies": {
     "mocha": "^2.4.5",
     "should": "^7.1.1",
-    "supertest": "^1.2.0"
+    "supertest": "^1.2.0",
+    "nodemon": ">=1.4.1"
   }
 }

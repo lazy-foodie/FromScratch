@@ -1,30 +1,42 @@
-<div class="content">
-    <div class="title">Create account</div>
-    <div></div>
-    <input type="text" placeholder="E-mail"/>
-    <input type="password" placeholder="Password"/>
-    <input type="checkbox" id="rememberMe"/>
-    <label for="rememberMe"></label>
-    <span>I have read and agree to the 
-        <a href="/">Terms of Use </a>
-        and <a href="/">Privacy Policy</a>
-    </span>
-    <button>Create Account</button>
-    <div class="social"> 
-        <span>or sign up with social media</span>
-    </div>
-    <div class="buttons">
-        <button class="facebook">
-            <span class="fa fa-facebook" aria-hidden="true"></span>&nbsp; Facebook
-        </button>
-        <button class="twitter">
-            <span class="fa fa-twitter" aria-hidden="true"></span>&nbsp; Twitter
-        </button>
-        <button class="google">
-            <span class="fa fa-google-plus" aria-hidden="true"></span>&nbsp; Google
-        </button>
-    </div>
-    <div class="already">Already have an account? 
-        <a href="#">Sign In</a>
+<div class="content pad-lr-0 container-spl col-lg-8 col-md-8 col-sm-10 col-xs-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-1 col-xs-offset-1" id="login" ng-controller ='LoginController'>
+    <div class="container container-col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">       
+        <div class ='row container-spl pad-t-15'>
+            <h1 class='title'>Login</h1>
+        </div>
+        <div class ='row container-spl'>
+            <form class="form" role="form" id="formLogin" novalidate ng-submit='login()'>
+                <div ng-show='error' class="alert alert-danger">
+                  <strong>Error</strong> {{error.message}}
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control reg_input" placeholder="E-mail" ng-model="user.email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control reg_input" placeholder="Password" ng-model="user.password" required>
+                </div>                 
+                <button type='submit'>Login</button>
+            </form>
+        </div>
+
+        <div class ='row container-spl'>
+
+            <div class="social"> 
+                <span>or login with social media</span>
+            </div>
+            <div class="buttons">
+                <button class="facebook">
+                    <span class="fa fa-facebook" aria-hidden="true"></span>&nbsp; Facebook
+                </button>
+                <button class="twitter">
+                    <span class="fa fa-twitter" aria-hidden="true"></span>&nbsp; Twitter
+                </button>
+                <button class="google">
+                    <span class="fa fa-google-plus" aria-hidden="true"></span>&nbsp; Google
+                </button>
+            </div>
+            <div class="already">Not have an account yet? 
+                <a href="/register">Create An Account</a>
+            </div>
+        </div>
     </div>
 </div>

@@ -2,6 +2,13 @@
 angular.module(
 	'lazyFoodieApp', 
 	['ngRoute', 
+	'ngAnimate',
+    'ngAria',
+    'ngCookies',
+    'ngMessages',
+    'ngResource',
+    'ngSanitize',
+    'ngTouch',
 	'appRoutes', 
 	'appConfig',
 	'NerdCtrl', 
@@ -13,5 +20,7 @@ angular.module(
 	'RecipeCtrl', 
 	'FavRecipeCtrl',
 	'FavRecipeService',
-	'SearchResultCtrl'
+	'SearchResultCtrl', 
+	'LoginCtrl', 
+	'RegisterCtrl'
 ]);
