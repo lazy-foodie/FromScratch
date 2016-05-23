@@ -1,4 +1,4 @@
-angular.module('FavRecipeCtrl', []).controller('FavoriteRecipesController', function($scope, FavRecipeService) {
+angular.module('FavRecipeCtrl', []).controller('FavoriteRecipesController', function($scope, $route, FavRecipeService) {
 
 	$scope.tagline = 'Your Favorite Recipe List Is Coming Soon... :)';	
 	FavRecipeService.GetTestData()
@@ -7,4 +7,17 @@ angular.module('FavRecipeCtrl', []).controller('FavoriteRecipesController', func
 		}, function(error) {
 			alert('error' + error);
 		})
+
+	$scope.close = function() {
+  		var Dlg = document.getElementById("Overlay");
+  		Dlg.style.visibility = "hidden";
+  	};
+
+	$scope.confirmation = function() {
+		  var Dlg = document.getElementById("Overlay");
+  		  Dlg.style.visibility = "visible";
+  		  $scope.delete = function() {
+			$route.reload();
+  		  }
+	};
 });

@@ -21,12 +21,27 @@
                 </div>
             </div>
         </div>
-
+        
         <div class = 'clear15'></div>
         <!-- START PHOTO GALERY -->
+
         <div class="container pad-lr-0 container-spl pad-b-15">
+                    <div id="Overlay">
+                        <div>
+                            <p id="DlgContent">Are you sure you want to Delete?</p>
+                            <input ng-click="delete()" id="btnYes"
+                                        type="button"
+                                        value="Yes"/>
+                            <input ng-click="close()" id="btnNo"
+                                        type="button"
+                                        value="Cancel"/>
+                            </div>
+                    </div>
             <div class="row container-spl gallery" >
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 photo pad-t-10" ng-repeat="recipe in testData">
+                    <button ng-click="confirmation()" type="button" class="removeButton">
+                         <span class="glyphicon glyphicon-remove"></span>
+                   {{ test }} </button>
                     <a href="/recipes/{{recipe._id}}" class="thumbnail alignCenter">
                         <img title="{{recipe.name}}" ng-src="{{recipe.imageUrl}}" class="img-thumbnail img-responsive"> 
                         <h6>{{recipe.name}}</h6>

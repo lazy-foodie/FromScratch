@@ -287,7 +287,7 @@ color: #d2d2d2;
     font-weight: 500 !important;
 }
 
-/* paneil */
+/* panel */
 .panel-heading h3 {
     font-weight: 600 !important;
     white-space: nowrap;
@@ -304,4 +304,22 @@ color: #d2d2d2;
     color: blue !important;
 }
 
+.removeButton {
+    color: #cc0000;
+    float: right;
+}
 
+#Overlay
+{
+  position: inherit;
+  vertical-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  visibility: hidden;
+  width: 20%;
+  padding: 10px;
+  text-align:center;
+  border: solid;
+  border-color: #cc0000;
+  background-color: lightgray;
+}
