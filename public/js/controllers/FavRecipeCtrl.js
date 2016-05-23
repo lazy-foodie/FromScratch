@@ -7,17 +7,4 @@ angular.module('FavRecipeCtrl', []).controller('FavoriteRecipesController', func
 		}, function(error) {
 			alert('error' + error);
 		})
-
-	$scope.close = function() {
-  		var Dlg = document.getElementById("Overlay");
-  		Dlg.style.visibility = "hidden";
-  	};
-
-	$scope.confirmation = function() {
-		  var Dlg = document.getElementById("Overlay");
-  		  Dlg.style.visibility = "visible";
-  		  $scope.delete = function() {
-			$route.reload();
-  		  }
-	};
 });
