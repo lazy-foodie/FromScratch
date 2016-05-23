@@ -21,12 +21,34 @@
                 </div>
             </div>
         </div>
-
+        
         <div class = 'clear15'></div>
         <!-- START PHOTO GALERY -->
+
         <div class="container pad-lr-0 container-spl pad-b-15">
+                  <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Are you sure you want to delete?</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>Clicking "Yes" will permanently delete this meal from your favorites page. </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+                        </div>
+                      </div>  
+                    </div>
+              </div>
             <div class="row container-spl gallery" >
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 photo pad-t-10" ng-repeat="recipe in testData">
+                    <button type="button" class="removeButton" data-toggle="modal" data-target="#myModal">
+                         <span class="glyphicon glyphicon-remove"></span>
+                    </button>
                     <a href="/recipes/{{recipe._id}}" class="thumbnail alignCenter">
                         <img title="{{recipe.name}}" ng-src="{{recipe.imageUrl}}" class="img-thumbnail img-responsive"> 
                         <h6>{{recipe.name}}</h6>
