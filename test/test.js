@@ -9,15 +9,11 @@ var should = require('should'),
     // Favorite = mongoose.model('Favorite');
 
 // This agent refers to PORT where program is runninng.
-var client = supertest.agent("http://localhost:3000");
 var server = supertest.agent("http://localhost:8080");
 
 // UNIT test begin
 
 describe("Server unit test",function(){
-    var resResult;
-    var response;
-
     // before(function(done) {
     //     client
     //     .get('/api/nerds')
@@ -32,17 +28,21 @@ describe("Server unit test",function(){
     //       done();
     //     });
     // });
-    // calling nerd api
-  it("should return nerds object",function(done){
-    client
-    .get('/api/nerds')
-    .expect("Content-type",/json/)
-    .expect(200)
-    .end(function(err,res){
-      res.status.should.equal(200);
-      done();
+
+    describe("Testing GET methods",function(){
+        // calling nerd api
+      it("GET /api/users should return list of users",function(done){
+        server
+        .get('/api/users')
+        .set('Accept', 'application/json')
+        .expect("Content-type",/json/)
+        .expect(200)
+        .end(function(err,res){
+          res.status.should.equal(200);
+          done();
+        });
+      });
     });
-  });
     // it ("should return an array of more than 1 object", function() {
     //   expect(response).to.have.status(200);
     //   expect(response).to.have.an.object;
@@ -54,7 +54,7 @@ describe("Server unit test",function(){
 describe("Client unit test",function(){
 
     // #1 should return home page
-    it("should return home page",function(done){
+    it("GET / should return home page",function(done){
         // calling home page api
         server
         .get("/")
@@ -67,8 +67,8 @@ describe("Client unit test",function(){
         });
     });
 
-    it("should return one recipe page",function(done){
-        client
+    it("GET /recipes/Flat-Belly-Detox-water-1606683 should return one recipe page",function(done){
+        server
         .get('/recipes/Flat-Belly-Detox-water-1606683')
         .expect("Content-type",/json/)
         .expect(200)
@@ -78,8 +78,8 @@ describe("Client unit test",function(){
         });
     });
 
-    it("should return favorite page",function(done){
-        client
+    it("GET /favRecipes should return favorite page",function(done){
+        server
         .get('/favRecipes')
         .expect("Content-type",/json/)
         .expect(200)

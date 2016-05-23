@@ -24,14 +24,14 @@
     <!-- START PHOTO GALERY -->
     <div class="container pad-lr-0 container-spl pad-b-15">
         <h3 class="panel-heading title">Top Rated Recipes</h3>
-            <div class="row container-spl gallery" >
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 photo pad-t-10" ng-repeat="recipe in recipes">
-                    <a href="/recipes/{{recipe.id}}" class="thumbnail alignCenter">
-                        <img title="{{recipe.recipeName}}" ng-src="{{recipe.imageUrlsBySize[90]}}" class="img-thumbnail img-responsive"> 
-                        <h6>{{recipe.recipeName}}</h6>
-                    </a>
-                </div>                
-            </div>
+        <div class="row container-spl gallery" >
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 photo pad-t-10" ng-repeat="recipe in recipes">
+                <a href="/recipes/{{recipe.id}}" class="thumbnail alignCenter">
+                    <img title="{{recipe.recipeName}}" ng-src="{{recipe.imageUrlsBySize[90]}}" class="img-thumbnail img-responsive"> 
+                    <h6>{{recipe.recipeName}}</h6>
+                </a>
+            </div>                
+        </div>
     </div>
     <!-- END PHOTO GALERY -->
 </div>

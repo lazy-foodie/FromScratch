@@ -7,6 +7,10 @@ angular.module('UserService', []).factory('UserService', function($http, $q) {
     var userService = {};
     userService.GetTestData = getTestData;
     userService.GetUserById = getUserById;
+    userService.Register = register;
+    userService.Login = login;
+    userService.IsLoggedIn = isLoggedIn;
+    userService.CurrentUser = currentUser;
 
     return userService;
 
@@ -21,10 +25,31 @@ angular.module('UserService', []).factory('UserService', function($http, $q) {
         return $http.get(url).then(handleSuccess, handleError);
     }
 
-        function getUserById (id) {
+    function getUserById (id) {
             url = 'api/users/' + id;
             return $http.get(url).then(handleSuccess, handleError);
     }
+
+    function register (user) {
+        url = '/register';
+        // return $http.post(url, user).then(handleSuccess, handleError);
+    }
+
+    function login(user) {
+        url = '/login';
+        // return $http.post(url, user).then(handleSuccess, handleError);
+    }
+
+
+    //returns a boolean to check if user is logged in
+    function isLoggedIn(){
+        return true;
+    };
+
+    //returns name of user logged in
+    function currentUser(){
+        return 'bich';
+    };
 
     /*****************************************/
     /* Helper private methods for error handling */
