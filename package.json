@@ -20,8 +20,7 @@
   ],
   "scripts": {
     "start": "node server.js",
-    "test": "mocha",
-    "watch": "nodemon server.js --ignore sessions",
+    "test": "mocha --reporter spec test/*.js",
     "make-certificate": "openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365",
     "remove-passphrase": "openssl rsa -in key.pem -out newkey.pem && mv newkey.pem key.pem"
   },
@@ -44,6 +43,10 @@
     "mocha": "^2.4.5",
     "should": "^7.1.1",
     "supertest": "^1.2.0",
-    "nodemon": ">=1.4.1"
+    "chai" : "*",
+    "chai-http" : "*",
+    "assert" : "*",
+    "q" : "*",
+    "async" : "*"
   }
 }
