@@ -32,7 +32,7 @@
 					    <dt>Rating:</dt>
 					    <dd>{{rating}} Out of 5</dd>
 					    <dt>Ingredients:</dt>
-					    <dd>{{ingredients}}</dd>
+					    <dd ng-repeat="ingredient in ingredients"><p>{{ingredient}}</p></dd>
 					    <dt>Number Of Servings:</dt>
 					    <dd>{{numberOfServings}}</dd>
 				  	</dl>   
@@ -47,7 +47,9 @@
 			        <h3 class="panel-title pull-left">Source: {{sourceDisplayName}}</h3>
 	<!-- 		        <button type="button" class="btn btn-default pull-right" ng-click="togleEmbedRecipeWebSource()">{{buttonText}} Web Source</button> -->
 					<a href={{sourceRecipeUrl}}>
-						<button type="button" class="btn btn-default pull-right" >{{buttonText}} Web Source</button>
+						<button type="button" class="btn btn-default pull-right" >
+							{{buttonText}} Web Source&nbsp;<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+						</button>
 					</a>
 			        
 			        <div class="clearfix"></div>

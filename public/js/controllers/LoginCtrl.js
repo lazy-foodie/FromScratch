@@ -1,9 +1,16 @@
 angular.module('LoginCtrl', []).controller('LoginController', ['$scope', '$location', 'UserService', function($scope, $location, UserService){
-  	$scope.loginForm = {};
+  	$scope.userLogin = {};
   	$scope.error = false;
-    // $scope.disabled = false;
+    $scope.errorMessage ='';
+    $scope.submitted = false;
 
-  	$scope.login = function(){
+  	$scope.login = function(isValid){
+        $scope.submitted = true;
+        $scope.dataloading = true;
+        if (!isValid) {
+            console.log('\n Invalid form');
+            return;
+        }
         login();
   	}; 
 
@@ -12,18 +19,21 @@ angular.module('LoginCtrl', []).controller('LoginController', ['$scope', '$locat
     }
 
     function login() {
-        alert("\nloginForm.email: " + $scope.loginForm.email+ "\nloginForm.password: " + $scope.loginForm.password);
-        UserService.Login($scope.loginForm)    
+        console.log("Valid Form: \nuserLogin.email: " + 
+            $scope.userLogin.email + 
+            "\nuserLogin.password: " + 
+            $scope.userLogin.password);
+        UserService.Login($scope.userLogin)    
         .then(function(data) {
             $location.path('/');
-            // $scope.disabled = false;
-            $scope.loginForm = {};
+            $scope.userLogin = {};
+            $scope.submitted = false;
         }, function(error) {
-            console.log('RegisterController.js: error logining: ' + error);
+            console.log('LoginController.js: error logining: ' + error);
             $scope.error = true;
             $scope.errorMessage = 'Invalid username and/or password';
-            // $scope.disabled = true;
-            $scope.loginForm.password = '';
+            $scope.userLogin.password = '';
+            $scope.submitted = false;
         })  
     }
 

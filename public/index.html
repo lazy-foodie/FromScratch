@@ -38,13 +38,14 @@
             <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
              <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/profile">My Profile</a></li>
-                    <li><a href="/favRecipes">My Favorite Recipes</a></li>
+                    <li><a href="/home"><span class="glyphicon glyphicon-home"></span> &nbsp;Home</a></li>
+                    <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> &nbsp;My Profile</a></li>
+                    <li><a href="/favRecipes"><span class="glyphicon glyphicon-star"></span> &nbsp;My Favorite Recipes</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" ng-controller ='NavigationController'>
                     <li><a href="/nerds">Nerds</a></li>
-                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li ng-hide='isLoggedIn'><a href="/login"><span class="glyphicon glyphicon-log-in"></span> &nbsp;Login</a></li>
+                    <li ng-show='isLoggedIn'><a href="/profile"><span class="glyphicon glyphicon-user"></span> &nbsp;{{ currentUser.firstName }}</a></li>
                 </ul>
             </div>
         </div>
@@ -69,9 +70,9 @@
             <span class="divider"></span>
             <a href='/about'>About Us</a>
         </h5>
-        <h5 "col-xs-12 col-sm-12 col-md-4 col-lg-4 ">Recipe search powered by 
+        <h5 class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">Recipe search powered by &nbsp;
             <a href='http://www.yummly.com/recipes'>
-                <img alt='Yummly' src='http://static.yummly.com/api-logo.png' class='image-responsive'/>
+                <span><img alt='Yummly' src='http://static.yummly.com/api-logo.png' class='image-responsive'/></span>
             </a>
         </h5>
     </footer>
@@ -111,6 +112,7 @@
     <script src="js/controllers/SearchResultCtrl.js"></script>
     <script src="js/controllers/LoginCtrl.js"></script>
     <script src="js/controllers/RegisterCtrl.js"></script>
+    <script src="js/controllers/NavigationCtrl.js"></script>
 
     <!-- SERVICES -->
     <script src="js/services/NerdService.js"></script>

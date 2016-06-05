@@ -1,53 +1,73 @@
-<div class="content col-lg-8 col-md-8 col-sm-10 col-xs-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-1 col-xs-offset-1" id="register" ng-controller ='RegisterController'>
-    
+<div class="content pad-lr-0 container-spl col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2  col-md-offset-2 col-sm-offset-2" id="login" ng-controller ='RegisterController'>
+
     <h1 class='title'>Create account</h1>
 
     <div class ='row container-spl'>
-        <div ng-show='error' class="alert alert-danger" >
+        <div ng-show="error" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id'error'>
+            <div class ='alert alert-danger'>
                 <strong>Error</strong> {{errorMessage}}
+            </div>
         </div>        
-        <form class="form" role="form" id="formRegister" novalidate ng-submit='register()'>
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                <input type="text" class="form-control reg_input" placeholder="First Name" ng-model="user.first_name" required>
+        <form class="form" role="form" name='registerForm' novalidate ng-submit='register(registerForm.$valid)'>
+            <!--First Name-->            
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-class="{ 'has-error': registerForm.firstname.$invalid && registerForm.firstname.$pristine && submitted}">
+                <input type="text"class="form-control reg_input" name='firstname' placeholder="First Name" ng-model="userRegister.first_name" required>
+                <p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine && submitted" class="help-block">First name is required</p>
             </div>
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                <input type="text" class="form-control reg_input" placeholder="Last Name" ng-model="user.last_name" required>
+            <!--Last Name-->            
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-class="{ 'has-error': registerForm.lastname.$invalid && registerForm.lastname.$pristine && submitted}">
+                <input type="text"class="form-control reg_input" name='lastname' placeholder="First Name" ng-model="userRegister.last_name" required>
+                <p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine && submitted" class="help-block">Last name is required</p>
             </div>
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                <input type="email" class="form-control reg_input" placeholder="E-mail" ng-model="user.email" required>
+            <!--Email-->            
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"ng-class="{ 'has-error': registerForm.email.$invalid && registerForm.email.$pristine && submitted}">
+                <input type="email" class="form-control reg_input" name='email'placeholder="E-mail" ng-model="userRegister.email" required>
+                <p ng-show="registerForm.email.$error.required  && submitted" class="help-block">Email is required</p>
+                <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine  && submitted" class="help-block">Please enter a valid email</p>
             </div>
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                <input type="password" class="form-control reg_input" placeholder="Password" ng-model="user.password" required>
+            <!--Password-->            
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"ng-class="{ 'has-error': registerForm.password.$invalid && registerForm.password.$pristine && submitted}">
+                <input type="password" class="form-control reg_input" name='password' placeholder="Password" ng-model="userRegister.password" required>
+                <p ng-show="registerForm.password.$invalid && !registerForm.password.$pristine  && submitted" class="help-block">Password is required</p>
             </div>
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                <input type="password" class="form-control reg_input" placeholder="Confirm Password" ng-model="user.confirm_password" required>
+            <!--Confirm Password-->
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"ng-class="{ 'has-error': registerForm.confirmpassword.$invalid && registerForm.confirmpassword.$pristine && submitted}">
+                <input type="password" class="form-control reg_input" name='confirmpassword' placeholder="Password" required>
+                <p ng-show="registerForm.confirmpassword.$invalid && !registerForm.confirmpassword.$pristine &&password===confirm_password && submitted" class="help-block">Confirm password is required</p>
             </div>
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                <input type="checkbox" class="form-control reg_input" ng-model="user.agreement" id="rememberMe" required>
-                <label for="rememberMe"></label>
+            <!--Checkbox Terms & Agreement-->
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-class="{ 'has-error': registerForm.agreement.$invalid && registerForm.agreement.$pristine && submitted}">
+                <input type="checkbox" class="form-control reg_input" name='agreement'id="rememberMe" required>
+                <label for="agreement"></label>
                 <span>I have read and agree to the 
-                    <a href="/">Terms of Use </a>
-                    and <a href="/">Privacy Policy</a>
+                    <a href="/register">Terms of Use </a>
+                    and <a href="/register">Privacy Policy</a>
                 </span>
-            </div>        
-            <div>               
-                <button type='submit' ng-disabled='disabled'>Create An Account</button>
+                <p ng-show="registerForm.agreement.$invalid && !registerForm.agreement.$pristine  && submitted" class="help-block">Agreement is required</p>
+            </div>     
+            <!--Button submit-->               
+            <div class='form-actions col-lg-12 col-md-12 col-sm-12 col-xs-12'>               
+                <button type='submit'>Create An Account</button>
             </div>
         </form>
     </div>
 
     <div class ='row container-spl'>
 
-        <div class="social"> 
+        <div class="social col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
             <span>or sign up with social media</span>
         </div>
-        <div class="buttons">
+        <div class='col-lg-4 col-md-4 col-sm-4 col-xs-12'>
             <button class="facebook">
                 <span class="fa fa-facebook" aria-hidden="true"></span>&nbsp; Facebook
             </button>
+        </div>
+        <div class='col-lg-4 col-md-4 col-sm-4 col-xs-12'>
             <button class="twitter">
                 <span class="fa fa-twitter" aria-hidden="true"></span>&nbsp; Twitter
             </button>
+        </div>
+        <div class='col-lg-4 col-md-4 col-sm-4 col-xs-12'>
             <button class="google">
                 <span class="fa fa-google-plus" aria-hidden="true"></span>&nbsp; Google
             </button>
@@ -57,4 +77,4 @@
         </div>
     </div>
 </div>
-    <div class="container pad-lr-0 container-spl pad-b-15"></div>
+<div class="container pad-lr-0 container-spl pad-b-15"></div>

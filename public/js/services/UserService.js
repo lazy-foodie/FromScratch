@@ -3,7 +3,7 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
     var baseUrl = "api/users/";
 
     // Initialize user obj
-    var user = {};
+    var user = null;
 
     /*****************************************/
     /* Initialize public services */
@@ -12,6 +12,7 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
     userService.GetTestData = getTestData;
     userService.GetUserById = getUserById;
     userService.Register = register;
+    userService.Update = update;
     userService.Login = login;
     userService.Logout = logout;
     userService.IsLoggedIn = isLoggedIn;
@@ -35,15 +36,15 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
             url = baseUrl + id;
             return $http.get(url).then(handleSuccess, handleError);
     }
-
+    // Register new user
     function register (user) {
-        url = baseUrl + '/register';
+        url = baseUrl + 'register';
         // return $http.post(url, user).then(handleSuccess, handleError);
         // create a new instance of deferred
         var deferred = $q.defer();
 
         // send a post request to the server
-        $http.post('/user/register', user)
+        $http.post(url, user)
         // handle success
         .then(function (data, status) {
             if(status === 200 && data.status){
@@ -61,14 +62,43 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
         return deferred.promise;
     }
 
+    // Update
+    function update(user) {
+        url = baseUrl + user.id;
+        // create a new instance of deferred
+        var deferred = $q.defer();
+
+        // send a post request to the server
+        $http.put(url, reqUser)
+        // handle success
+        .then(function (data, status) {
+            if(status === 200 && data.status){
+                user = reqUser;
+                deferred.resolve();
+            } else {
+                user = {};
+                deferred.reject();
+            }
+        },
+        // handle error
+        function (data) {
+            user = {};
+            deferred.reject();
+        });
+
+        // return promise object
+        return deferred.promise;    
+    }
+
+    // Login
     function login(reqUser) {
-        url =  baseUrl+ '/login';
+        url =  baseUrl+ 'login';
         // return $http.post(url, reqUser).then(handleSuccess, handleError);
         // create a new instance of deferred
         var deferred = $q.defer();
 
         // send a post request to the server
-        $http.post('/user/login', reqUser)
+        $http.post(url, reqUser)
         // handle success
         .then(function (data, status) {
             if(status === 200 && data.status){
@@ -89,8 +119,9 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
         return deferred.promise;
     }
 
+    // Logout
     function logout(user) {
-        url = baseUrl + '/logout';
+        url = baseUrl + 'logout';
         // return $http.get(url).then(handleSuccess, handleError);
         // create a new instance of deferred
         var deferred = $q.defer();
@@ -111,18 +142,20 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
         return deferred.promise;
     }
 
-    //returns a boolean to check if user is logged in
+    //Returns a boolean to check if user is logged in
     function isLoggedIn(){
-        return user !== null? true: false;
+        return user === null? false:true;
     };
 
-    //returns name of user logged in
+    //Returns name of user logged in
     function getCurrentUser(){
         return user;
     };
 
+    // Return a user status
     function getUserStatus() {
-        return $http.get('/user/status')
+        var url = baseUrl + 'status';
+        return $http.get(url)
           // handle success
         .then(function (data) {
             if(!data.status){
