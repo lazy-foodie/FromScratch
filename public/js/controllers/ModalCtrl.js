@@ -1,6 +1,6 @@
 var mymodal = angular.module('ModalCtrl', []);
 
-mymodal.controller('MainCtrl', function ($scope) {
+mymodal.controller('ModalController', function ($scope) {
     $scope.showModal = false;
     $scope.recipe_id = "";
     $scope.toggleModal = function(data){
@@ -9,12 +9,11 @@ mymodal.controller('MainCtrl', function ($scope) {
     };
     
     $scope.ok = function () {
-    alert('deleting');
+    alert('deleting recipe id: ' + $scope.recipe_id);
             $scope.showModal =false;
             //$http.delete(url, $scope.recipe_id)
     };
-    $scope.cancel = function() {
-        alert('cancel');            
+    $scope.cancel = function() {         
         $scope.showModal =false;
     };
   });
@@ -26,7 +25,7 @@ mymodal.directive('modal', function () {
             '<div class="modal-content">' + 
               '<div class="modal-header">' + 
                 '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' + 
-                '<h4 class="modal-title">{{ recipe_id }} clicked!!</h4>' + 
+                '<h4 class="modal-title">Deleting Favorite Recipe</h4>' + 
               '</div>' + 
               '<div class="modal-body" ng-transclude></div>' + 
             '</div>' +
