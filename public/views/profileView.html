@@ -10,7 +10,7 @@
     <!-- START DISPLAYING TESTING DATA-->
     <div class="container pad-lr-0 container-spl" >
         <!-- START GET ALL USERS DATA FROM DB. FOR TESTING ONLY-->
-        <div class="panel panel-default">
+<!--         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title pull-left">All User Data</h3>
                 <div class="clearfix"></div>
@@ -19,23 +19,29 @@
                 <div class="container alightCenter" ng-repeat="data in testData">
                     <dl class="dl">
                         <dt>User Object: </dt>
-                        <dd class="text-justify well">{{ data }}</dd>
+                        <dd class="text-justify well">{{ data }}</e>
                     </dl>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- END GET ALL USERS DATA FROM DB. FOR TESTING ONLY-->
         <!-- START GET A SINGLE USER FROM DB. FOR TESTING ONLY-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title pull-left">Single User Data</h3>
+                <h3 class="panel-title pull-left">Your Info</h3>
                 <div class="clearfix"></div>
             </div>
             <div class="panel-body pad-lr-0 container-spl">    
                 <div class="container alightCenter">    
                     <dl class="dl">
-                        <dt>User Object: </dt>
-                        <dd class="text-justify well">{{ singleUser }}</dd>
+                        <!-- <dt>User Object: </dt>
+                        <dd class="text-justify well">{{ singleUser }}</dd> -->
+                        <dt>Name</dt>
+                        <dd>{{ singleUser.firstName }} {{ singleUser.lastName }}</dd>
+                        <dt>Email</dt>
+                        <dd> {{ singleUser.email }}</dd>
+                        <dt>Developer</dt>
+                        <dd>{{ singleUser.developer }}</dd>
                     </dl>
                 </div>
             </div>

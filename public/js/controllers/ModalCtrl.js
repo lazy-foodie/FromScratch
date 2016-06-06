@@ -1,41 +1,11 @@
-angular.module('FavRecipeCtrl', []).controller('FavoriteRecipesController', function($scope, $route, FavRecipeService) {
-	/*$scope.showModal = false;*/
+var mymodal = angular.module('ModalCtrl', []);
 
-	$scope.tagline = 'Your Favorite Recipe List Is Coming Soon... :)';	
-	FavRecipeService.GetTestData()
-		.then(function(data) {
-			$scope.testData = data;
-		}, function(error) {
-			alert('error' + error);
-		})
-});
-
-	// var confirmed=false;
-	// $scope.confirmDelete =funtion(){
-	// 	confirmed = true;
-	// };
-	/*$scope.deleteImage = function() {
-		alert('button clicked');
-		$scope.showModal = true;
-		alert($scope.showModal);
-		// if (confirmed) {
-		// 	// delete();
-		// 	$scope.showModal = false;
-		// 	confirmed = false;
-		// } else {
-		// 	$scope.showModal = false;
-		// }
-	};*/
-	// function delete() {
-	// 	//var id = item.attributes["data-id"].value;
-	// 	//alert("_id for image is: " + id);
-	// };
-/*
-$scope.showModal = false;
+mymodal.controller('MainCtrl', function ($scope) {
+    $scope.showModal = false;
     $scope.recipe_id = "";
     $scope.toggleModal = function(data){
         $scope.recipe_id = data;
-        $scope.showModal = !$scope.showModal;
+        $scope.showModal = true;
     };
     
     $scope.ok = function () {
@@ -49,7 +19,7 @@ $scope.showModal = false;
     };
   });
 
-FavoriteRecipesController.directive('modal', function () {
+mymodal.directive('modal', function () {
     return {
       template: '<div class="modal fade">' + 
           '<div class="modal-dialog">' + 
@@ -89,5 +59,3 @@ FavoriteRecipesController.directive('modal', function () {
     };
   });
   
-
-*/
