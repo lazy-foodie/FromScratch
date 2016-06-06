@@ -18,14 +18,13 @@
 }
 
 .content {
-  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100%;
   background-color: rgba(10, 10, 10, 0.5);
-  margin: auto auto;
+  min- height:100% relative !important;
+  margin: auto relative;
   padding: 40px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -34,6 +33,7 @@
   -webkit-box-shadow: 0 0 10px black;
   box-shadow: 0 0 10px black;
 }
+
 .content .title {
   font-size: 25px !important;
   text-align: center;
@@ -45,7 +45,7 @@
   width: 100%;
   font-size: 1.2rem;
   font-family: "Open Sans";
-  margin: 10px 0px;
+  /*margin: 10px 0px;*/
   border: none;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
