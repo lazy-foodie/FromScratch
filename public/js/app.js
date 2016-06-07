@@ -23,5 +23,5 @@ angular.module(
 	'SearchResultCtrl', 
 	'LoginCtrl', 
 	'RegisterCtrl',
-	'NavigationCtrl'
+	'ModalCtrl'
 ]);

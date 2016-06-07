@@ -1,4 +1,6 @@
-angular.module('FavRecipeCtrl', []).controller('FavoriteRecipesController', function($scope, FavRecipeService) {
+
+angular.module('FavRecipeCtrl', []).controller('FavoriteRecipesController', function($scope, $route, FavRecipeService) {
+
 	$scope.tagline = 'Your Favorite Recipe List Is Coming Soon... :)';	
 	FavRecipeService.GetTestData()
 		.then(function(data) {
