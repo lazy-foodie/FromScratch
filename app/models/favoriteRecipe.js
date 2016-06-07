@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 var RecipeSchema = new Schema( {
       	recipeId: Number,
       	imageUrl: String,
-        name: String
+        name: String,
+        userId: String
 	},
       { collection: 'favorites' }
 );

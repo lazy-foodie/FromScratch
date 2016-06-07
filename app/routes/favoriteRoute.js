@@ -21,6 +21,33 @@ module.exports = function(app) {
             res.json(favorites); // return all nerds in JSON format
         });
     });
+
+    // Get fav by id
+    app.get('/api/favorites', function(req, res) {
+        // use mongoose to get all nerds in the database
+        FavRecipe.find(function(err, favorites) {
+            // if there is an error retrieving, send the error. 
+            // nothing after res.send(err) will execute
+            if (err) 
+              res.send(err);
+            res.json(favorites); // return all nerds in JSON format
+        });
+    });
+
+    //Try to delete a user's fav
+    app.delete('/api/favorites/:userId', function (req, res, next){
+        return FavRecipe.findOne({userId: req.params.userId}, function (err, favorite) {
+        return favorite.remove(function (err) {
+        if (!err) {
+          console.log("removed");
+          res.json(favorite);
+        } else {
+          console.log(err);
+          next(err);
+        }
+      });
+     });
+    });
     /*****************************************/
     /* Helper private methods */
     /*****************************************/

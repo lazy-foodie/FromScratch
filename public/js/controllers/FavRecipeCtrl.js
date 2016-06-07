@@ -6,5 +6,7 @@ angular.module('FavRecipeCtrl', []).controller('FavoriteRecipesController', func
 			$scope.testData = data;
 		}, function(error) {
 			alert('error' + error);
-		})
+		});
+
+    
 });

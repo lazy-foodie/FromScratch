@@ -8,7 +8,7 @@
 	        </div>
 	        <div class ='col-lg-1 col-md-1 col-sm-0 col-xs-0'></div>
 	        <div class ='col-lg-6 col-md-6 col-sm-12 col-xs-12 alignCenter'>
-	            <h2 class=" alignCenter well">{{recipeName}}</h2>
+	            <h2 class=" alignCenter well">{{recipeName}}</h2> 
 	        </div>
 	        <div class ='col-lg-1 col-md-1 col-sm-0 col-xs-0'></div>
 	    </div>
@@ -21,6 +21,8 @@
 		  		<!-- Start Heading -->
 		  		<div class="panel-heading">
 			        <h3 class="panel-title pull-left">Details</h3>
+			        <a href="#" class="btn btn-default pull-right" ng-click = 'addToFav()' ><span class="glyphicon glyphicon-heart">	        
+			        </span> Add To Favorite</a>
 			    	<div class="clearfix"></div>
 			    </div>
 		  		<!-- End Heading -->	
@@ -35,6 +37,8 @@
 					    <dd>{{ingredients}}</dd>
 					    <dt>Number Of Servings:</dt>
 					    <dd>{{numberOfServings}}</dd>
+					    <dt>Course:</dt>
+					    <dd>{{course}}</dd>
 				  	</dl>   
 				</div>
 		  		<!-- End Details Body -->	  			    			

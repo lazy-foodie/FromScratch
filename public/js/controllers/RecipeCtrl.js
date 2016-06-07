@@ -13,6 +13,7 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
     $scope.images =[];
     $scope.hostedLargeUrl;
     $scope.hostedSmallUrl;
+    $scope.course;
     $scope.recipe_id = $routeParams.recipeId;
     $scope.errorMessage;
     $scope.embedRecipeWebSource = false;
@@ -38,6 +39,7 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
             $scope.rating = recipeDetail.rating;
             $scope.numberOfServings = recipeDetail.numberOfServings;
             $scope.sourceDisplayName = recipeDetail.source.sourceDisplayName;
+            $scope.course = recipeDetail.attributes.course.toString();
             $scope.sourceSiteUrl= recipeDetail.source.sourceSiteUrl;
             $scope.sourceRecipeUrl = recipeDetail.source.sourceRecipeUrl;
             $scope.ingredients = recipeDetail.ingredientLines.toString();
