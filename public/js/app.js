@@ -22,5 +22,6 @@ angular.module(
 	'FavRecipeService',
 	'SearchResultCtrl', 
 	'LoginCtrl', 
-	'RegisterCtrl'
+	'RegisterCtrl',
+	'ModalCtrl'
 ]);
