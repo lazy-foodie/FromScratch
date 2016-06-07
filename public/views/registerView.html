@@ -1,4 +1,4 @@
-<div class="content pad-lr-0 container-spl col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2  col-md-offset-2 col-sm-offset-2" id="login" ng-controller ='RegisterController'>
+<div class="content pad-lr-0 container-spl col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-offset-3  col-md-offset-3 col-sm-offset-3" id="login" ng-controller ='RegisterController'>
 
     <h1 class='title'>Create account</h1>
 
@@ -11,40 +11,30 @@
         <form class="form" role="form" name='registerForm' novalidate ng-submit='register(registerForm.$valid)'>
             <!--First Name-->            
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-class="{ 'has-error': registerForm.firstname.$invalid && registerForm.firstname.$pristine && submitted}">
-                <input type="text"class="form-control reg_input" name='firstname' placeholder="First Name" ng-model="userRegister.first_name" required>
+                First Name*&nbsp;<input type="text"class="form-control reg_input" name='firstname' placeholder="First Name" ng-model="userRegister.first_name" required>
                 <p ng-show="registerForm.firstname.$invalid && !registerForm.firstname.$pristine && submitted" class="help-block">First name is required</p>
             </div>
             <!--Last Name-->            
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-class="{ 'has-error': registerForm.lastname.$invalid && registerForm.lastname.$pristine && submitted}">
-                <input type="text"class="form-control reg_input" name='lastname' placeholder="First Name" ng-model="userRegister.last_name" required>
+                Last Name*&nbsp;<input type="text"class="form-control reg_input" name='lastname' placeholder="First Name" ng-model="userRegister.last_name" required>
                 <p ng-show="registerForm.lastname.$invalid && !registerForm.lastname.$pristine && submitted" class="help-block">Last name is required</p>
             </div>
             <!--Email-->            
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"ng-class="{ 'has-error': registerForm.email.$invalid && registerForm.email.$pristine && submitted}">
-                <input type="email" class="form-control reg_input" name='email'placeholder="E-mail" ng-model="userRegister.email" required>
+                Email*&nbsp;<input type="email" class="form-control reg_input" name='email'placeholder="E-mail" ng-model="userRegister.email" required>
                 <p ng-show="registerForm.email.$error.required  && submitted" class="help-block">Email is required</p>
                 <p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine  && submitted" class="help-block">Please enter a valid email</p>
             </div>
             <!--Password-->            
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"ng-class="{ 'has-error': registerForm.password.$invalid && registerForm.password.$pristine && submitted}">
-                <input type="password" class="form-control reg_input" name='password' placeholder="Password" ng-model="userRegister.password" required>
+                Password*&nbsp;<input type="password" class="form-control reg_input" name='password' placeholder="Password" ng-model="userRegister.password" required>
                 <p ng-show="registerForm.password.$invalid && !registerForm.password.$pristine  && submitted" class="help-block">Password is required</p>
             </div>
             <!--Confirm Password-->
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12"ng-class="{ 'has-error': registerForm.confirmpassword.$invalid && registerForm.confirmpassword.$pristine && submitted}">
-                <input type="password" class="form-control reg_input" name='confirmpassword' placeholder="Password" required>
+                Confirm Password*&nbsp;<input type="password" class="form-control reg_input" name='confirmpassword' placeholder="Password" required>
                 <p ng-show="registerForm.confirmpassword.$invalid && !registerForm.confirmpassword.$pristine &&password===confirm_password && submitted" class="help-block">Confirm password is required</p>
-            </div>
-            <!--Checkbox Terms & Agreement-->
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-class="{ 'has-error': registerForm.agreement.$invalid && registerForm.agreement.$pristine && submitted}">
-                <input type="checkbox" class="form-control reg_input" name='agreement'id="rememberMe" required>
-                <label for="agreement"></label>
-                <span>I have read and agree to the 
-                    <a href="/register">Terms of Use </a>
-                    and <a href="/register">Privacy Policy</a>
-                </span>
-                <p ng-show="registerForm.agreement.$invalid && !registerForm.agreement.$pristine  && submitted" class="help-block">Agreement is required</p>
-            </div>     
+            </div>                 
             <!--Button submit-->               
             <div class='form-actions col-lg-12 col-md-12 col-sm-12 col-xs-12'>               
                 <button type='submit'>Create An Account</button>

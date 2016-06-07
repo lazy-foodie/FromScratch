@@ -1,9 +1,3 @@
-// angular.module('RegisterCtrl', []).controller('RegisterController', function($scope) {
-// 	$scope.tagline = 'Your Profile Is Coming Soon... :)';	
-
-// });
-
-
 angular.module('RegisterCtrl', []).controller('RegisterController', ['$scope', '$location', 'UserService', function($scope, $location, UserService){
     $scope.userRegister = {};
   	$scope.error = false;
@@ -30,17 +24,25 @@ angular.module('RegisterCtrl', []).controller('RegisterController', ['$scope', '
             $scope.userRegister.password);
 
         UserService.Register($scope.registerForm)    
-        .then(function(data) {
-            $location.path('/login');
-            $scope.registerError = false;
-            $scope.userRegister = {};
-            $scope.submitted = false;
-        }, function(error) {
-            console.log('RegisterController.js: error logining: ' + error);
-            $scope.error = true;
-            $scope.errorMessage = 'Something went wrong';
-            $scope.userRegister = {};
-            $scope.submitted = false;
-        })  
+        .then(handleSuccess, handleError); 
     }
+
+    /*****************************************/
+    /* Helper private methods for error handling */
+    /*****************************************/
+    function handleError(error) {
+        console.log('RegisterController.js: error logining: ' + error);
+        $scope.error = true;
+        $scope.errorMessage = 'Something went wrong';
+        $scope.userRegister = {};
+        $scope.submitted = false;
+    }
+
+    function handleSuccess(response) {
+        $location.path('/login');
+        $scope.registerError = false;
+        $scope.userRegister = {};
+        $scope.submitted = false;
+    }
+
 }]);

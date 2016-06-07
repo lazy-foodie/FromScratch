@@ -280,7 +280,7 @@ color: #d2d2d2;
     font-weight: 500 !important;
 }
 
-/* paneil */
+/* panel */
 .panel-heading h3 {
     font-weight: 600 !important;
     white-space: nowrap;
@@ -297,4 +297,7 @@ color: #d2d2d2;
     color: blue !important;
 }
 
-
+.removeButton {
+    color: #cc0000;
+    float: right;
+}

@@ -14,36 +14,29 @@ angular.module('LoginCtrl', []).controller('LoginController', ['$scope', '$locat
         login();
   	}; 
 
-    $scope.logout = function() {
-        logout();
-    }
-
     function login() {
         console.log("Valid Form: \nuserLogin.email: " + 
             $scope.userLogin.email + 
             "\nuserLogin.password: " + 
             $scope.userLogin.password);
         UserService.Login($scope.userLogin)    
-        .then(function(data) {
-            $location.path('/');
-            $scope.userLogin = {};
-            $scope.submitted = false;
-        }, function(error) {
-            console.log('LoginController.js: error logining: ' + error);
-            $scope.error = true;
-            $scope.errorMessage = 'Invalid username and/or password';
-            $scope.userLogin.password = '';
-            $scope.submitted = false;
-        })  
+        .then(handleSuccess, handleError);  
     }
 
-    function logout() {
-        UserService.Logout()  
-        .then(function(data) {
-            $location.path('/login');
-        }, function(error) {
-            console.log('Error loging out: ' + error);
-        })    
+    /*****************************************/
+    /* Helper private methods for error handling */
+    /*****************************************/
+    function handleError(error) {
+        console.log('LoginController.js: error logining: ' + error);
+        $scope.error = true;
+        $scope.errorMessage = 'Invalid username and/or password';
+        $scope.userLogin.password = '';
+        $scope.submitted = false;
+    }
 
+    function handleSuccess(response) {
+        $location.path('/');
+        $scope.userLogin = {};
+        $scope.submitted = false;
     }
 }]);
