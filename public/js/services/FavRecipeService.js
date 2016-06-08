@@ -8,7 +8,7 @@ angular.module('FavRecipeService', []).factory('FavRecipeService', function($htt
     /*****************************************/  
     var favRecipeService = {};
     favRecipeService.GetTestData = getTestData;
-    favRecipeService.DeleteTestData = deleteTestData;
+ //   favRecipeService.DeleteTestData = deleteTestData;
     return favRecipeService;
 
     /*****************************************/
@@ -21,11 +21,11 @@ angular.module('FavRecipeService', []).factory('FavRecipeService', function($htt
         return $http.get(url).then(handleSuccess, handleError);
     }
 
-    // For deleting a fav
-    function deleteTestData () {
-        //var url = baseUrl + '/fake@gmail.com';
-      //  return $http.delete(url).then(handleSuccess, handleError);
-    }
+    // // For deleting a fav
+    // function deleteTestData () {
+    //     //var url = baseUrl + '/fake@gmail.com';
+    //   //  return $http.delete(url).then(handleSuccess, handleError);
+    // }
     /*****************************************/
     /* Helper private methods for error handling */
     /*****************************************/
