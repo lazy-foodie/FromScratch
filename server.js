@@ -3,18 +3,22 @@
 var express = require('express');
 var morgan = require('morgan');
 var app = express();
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var fs = require('fs');
 var url = require('url');
 var http = require('http');
-var https = require('https');
+var path = require('path');
 var uriUtil = require("mongodb-uri");
 var util = require('util');
+//authentication
+var passport = require('passport');
 var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-var crypto = require('crypto');
+// set the static files location /public/img will be /img for users
+console.log("Before defining app static route");
+app.use('/', express.static(__dirname + '/public'));
 
 // set our port
 var port = process.env.PORT || 8080;
@@ -35,19 +39,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override'));
 
+app.use(session({ 
+	secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+}));
 
-var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-  if ('OPTIONS' === req.method) {
-    res.send(200);
-  } else {
-    next();
-  }
-};
+// var allowCrossDomain = function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+//   if ('OPTIONS' === req.method) {
+//     res.send(200);
+//   } else {
+//     next();
+//   }
+// };
 
-app.use(allowCrossDomain);
+// app.use(allowCrossDomain);
 // Create the database connection 
 var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
                 replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } }; 
@@ -92,9 +101,10 @@ process.on('SIGINT', function() {
 console.log('Sending connecting request with MongoDB server');
 mongoose.connect(mongooseUri);
 
-// set the static files location /public/img will be /img for users
-console.log("Before defining app static route");
-app.use('/', express.static(__dirname + '/public'));
+  // Initialize Passport!  Also use passport.session() middleware, to support
+  // persistent login sessions (recommended).
+app.use(passport.initialize());
+app.use(passport.session());
 
 // routes ==================================================
 require('./app/routes/nerdRoute')(app); // configure our routes
@@ -102,6 +112,9 @@ require('./app/routes/userRoute')(app); // configure our routes
 require('./app/routes/favoriteRoute')(app); // configure our routes 
 //core ui route
 require('./routes')(app); // configure our routes
+
+
+var initPassport = require('./config/passport')(passport);
 
 /// catch 404 and forwarding to error handler
 app.use(function (req, res, next) {

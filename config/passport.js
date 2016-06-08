@@ -1,25 +1,33 @@
 // config/passport.js
-
 var FacebookStrategy = require('passport-facebook').Strategy;
-
+var url = require('url');
 // load up the user model
 var User       = require('../app/models/user');
 
 // load the auth variables
 var configAuth = require('./auth');
+var ObjectId = require('mongodb').ObjectID;
 
 module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        done(null, user._id);
+        done(null, user.id);
     });
 
     // used to deserialize the user
+    // passport.deserializeUser(function(id, done) {
+    //     User.findById(id, function(err, user) {
+    //         done(err, user);
+    //     });
+    // });
+
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-            done(err, user);
-        });
+        User.findOne({ _id : new ObjectId(id) },
+            function(err, user) {
+                done(err, user);
+            }
+        );
     });
     
     // =========================================================================
@@ -30,18 +38,19 @@ module.exports = function(passport) {
         // pull in our app id and secret from our auth.js file
         clientID        : configAuth.facebookAuth.clientID,
         clientSecret    : configAuth.facebookAuth.clientSecret,
-        callbackURL     : configAuth.facebookAuth.callbackURL
-
+        callbackURL     : configAuth.facebookAuth.callbackURL,
+        profileFields   : ["id", "name", "displayName","emails"]
+        // passReqToCallback: true
     },
 
     // facebook will send back the token and profile
     function(token, refreshToken, profile, done) {
-
+        console.log(profile);
         // asynchronous
         process.nextTick(function() {
 
             // find the user in the database based on their facebook id
-            User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
+            User.findOne({ "facebook.id" : profile.id }, function(err, user) {
 
                 // if there is an error, stop everything and return that
                 // ie an error connecting to the database
@@ -51,13 +60,15 @@ module.exports = function(passport) {
                 // if the user is found, then log them in
                 if (user) {
                     return done(null, user); // user found, return that user
-                } else {
+                } 
+                else {
                     // if there is no user found with that facebook id, create them
-                    var newUser            = new User();
-
+                    var newUser = new User();
+                    console.log(profile.emails[0].value);
                     // set all of the facebook information in our user model
                     newUser.firstName = profile.name.givenName;
                     newUser.lastName = profile.name.familyName;
+                    newUser.fullName = profile.displayName;
                     newUser.email = profile.emails[0].value;
                     newUser.facebook.id    = profile.id; // set the users facebook id                   
                     newUser.facebook.token = token; // we will save the token that facebook provides to the user                    

@@ -20,14 +20,14 @@ module.exports = function(passport) {
         clientID        : configAuth.facebookAuth.clientID,
         clientSecret    : configAuth.facebookAuth.clientSecret,
         callbackURL     : configAuth.facebookAuth.callbackURL,
-        profileFields   : configAuth.facebookAuth.profileFields
+        profileFields: ["id", "displayName", "name", "email"]    
     },
       
     // facebook will send back the token and profile
     function(token, refreshToken, profile, done) {
         
         // asynchronous
-        process.nextTick(function() {
+        // process.nextTick(function() {
 
             // find the user in the database based on their facebook id
             User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
@@ -39,19 +39,21 @@ module.exports = function(passport) {
 
                 // if the user is found, then log them in
                 if (user) {
+                    console.log('User: ' + user.name + ' found and logged in!');
                     return done(null, user); // user found, return that user
-                } else {
+                } 
+                else {
                     // if there is no user found with that facebook id, create them
                     var newUser            = new User();
 
                     // set all of the facebook information in our user model
                     newUser.firstName = profile.name.givenName;
                     newUser.lastName = profile.name.familyName;
-                    newUser.email = profile.emails[0].value;
+                    newUser.email = profile.email;
                     newUser.facebook.id    = profile.id; // set the users facebook id                   
                     newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
-                    newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
-                    newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
+                    newUser.facebook.name  = profile.displayName; // look at the passport user profile to see how names are returned
+                    newUser.facebook.email = profile.email; // facebook can return multiple emails so we'll take the first
 
                     // save our user to the database
                     newUser.save(function(err) {
@@ -65,39 +67,6 @@ module.exports = function(passport) {
 
             });
         });
-
-
-// router.post('/auth/facebook',
-//   passport.authenticate('facebook', { scope: ['public_profile', 'email'] }),
-//   function(req, res){
-//     // The request will be redirected to Facebook for authentication, so
-//     // this function will not be called.
-//   });
-
-
-//     // GET /auth/facebook/callback 
-//     //   Use passport.authenticate() as route middleware to authenticate the 
-//     //   request.  If authentication fails, the user will be redirected back to the 
-//     //   login page.  Otherwise, the primary route function function will be called, 
-//     //   which, in this example, will redirect the user to the home page. 
-//     router.get('/auth/facebook/callback',
-//       passport.authenticate('facebook', { failureRedirect: '/login' }),
-//       function () {
-//         return res.status(200).json({
-//             status: 'Registration successful!'
-//         });
-//     });
-
-//     app.get('/api/logout', function(req, res) {
-//         req.logout();
-//         res.status(200).json({
-//             status: 'Bye!'
-//         });
-//     });
-
-//     router.use(function(err, req, res, next) {
-//   console.error(err.stack);
-//   res.send(500, { message: err.message });
     }
     ));
 }
