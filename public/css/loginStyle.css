@@ -23,9 +23,8 @@
   left: 0;
   right: 0;
   background-color: rgba(10, 10, 10, 0.5);
-  min- height:100% relative !important;
-  margin: auto relative;
-  padding: 40px;
+  min-height:100% relative !important;
+  padding: 10px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -40,12 +39,12 @@
   font-weight: 600;
   padding-bottom: 20px;
 }
+
 .content input {
   color: black;
   width: 100%;
   font-size: 1.2rem;
   font-family: "Open Sans";
-  /*margin: 10px 0px;*/
   border: none;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -83,7 +82,7 @@
 .content input[type=checkbox]:checked + label:before {
   content: "\2713";
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  font-size: 20px;
+  /*font-size: 20px;*/
   color: Black;
   text-align: center;
   line-height: 20px;
@@ -117,7 +116,7 @@
 .content .social span:before, .content .social span:after {
   content: '';
   display: block;
-  /*width: 40rem;*/
+  width: 40rem;
   position: absolute;
   top: 0.9em;
   border-top: 1px solid White;
@@ -128,32 +127,32 @@
 .content .social span:after {
   left: 75%;
 }
-.content .buttons {
+/*.content .buttons {
   width: 100%;
-  margin: 30px 0px;
-}
-.content .buttons button {
+  margin: 20px 0px;
+}*/
+/*.content button {
   float: left;
   width: 30%;
   margin: 0px 1.5%;
-}
-.content .buttons button i {
+}*/
+/*.content .buttons button i {
   padding-right: 7px;
-}
-.content .buttons button.facebook {
+}*/
+.content  button.facebook {
   background-color: #4464B2;
 }
-.content .buttons button.twitter {
+.content  button.twitter {
   background-color: #28A9E0;
 }
-.content .buttons button.google {
+.content  button.google {
   background-color: #DA4735;
 }
-.content .buttons:after {
+/*.content .buttons:after {
   content: "";
   display: block;
   clear: both;
-}
+}*/
 .content .already {
   text-align: center;
   font-size: 0.9rem;

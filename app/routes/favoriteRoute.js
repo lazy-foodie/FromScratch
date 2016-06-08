@@ -54,8 +54,6 @@ module.exports = function(app) {
 
    //creates a new post
     app.post('/api/post', function(req, res,next){
-     // FavRecipe.save({recipeId:'aaa',imageUrl:'aaa',name: 'aaa', userId: 'bich@gmail.com'});
-
       console.log('in post');
        console.log(req.body);
        var recipe = new FavRecipe();
@@ -68,11 +66,6 @@ module.exports = function(app) {
                 res.send(err);
               else 
                 res.send({"sucess":"sucess"});
-          //  res.json({ message: 'recipe created!' });
-        });
-        
+        });        
     });
-    /*****************************************/
-    /* Helper private methods */
-    /*****************************************/
 };

@@ -34,10 +34,7 @@ module.exports = function(app) {
         });
     });
 
-
     /*****************************************/
     /* Helper private methods */
     /*****************************************/
 };
-
-console.log('user route done');

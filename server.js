@@ -1,5 +1,4 @@
 // server.js
-
 // modules =================================================
 var express = require('express');
 var morgan = require('morgan');
@@ -59,14 +58,6 @@ var mongooseUri = uriUtil.formatMongoose(dbUrl.url);
 console.log("mongooseDB URI:" + mongooseUri);
 
 var db = mongoose.connection;
-// app.use(session({ 
-// 	secret: 'keyboard cat',
-// 	store: new MongoStore({ 
-// 		mongooseConnection: db,
-// 		collection: 'sessions'
-// 	})
-// }));
-// CONNECTION EVENTS
 
 // If the connection throws an error
 db.on('error', function(err) {

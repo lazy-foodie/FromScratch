@@ -24,36 +24,17 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
     $scope.getRecipeDetail = function() {
         getRecipeDetail();
     };
- 
-    //$scope.data = {'recipeId': $scope.recipeId,'imageUrl': $scope.hostedLargeUrl,'name': $scope.recipeName, 'userId': 'bich@gmail.com'};
 
     $scope.addToFav = function() {
         var data = {recipeId: $scope.recipe_id,imageUrl: $scope.hostedLargeUrl,name: $scope.recipeName, userId: 'bich@gmail.com'};
-        alert($scope.recipe_id+$scope.hostedLargeUrl+$scope.recipeName+data.userId);
         $http.post('/api/post', data, {
             headers: { 'Content-Type': 'application/json; charset=UTF-8'}
         }).then(function() {
-        alert("inside the add function"); 
-        
+        alert("Added to your favorite list!");         
       },function(status){
-          alert("error when adding favorite");
+          alert("Error when adding favorite");
       });
     }
-
-    // $scope.addToFav = function() {
-    //     var data = {recipeId: $scope.recipe_id,imageUrl: $scope.hostedLargeUrl,name: $scope.recipeName, userId: 'bich@gmail.com'};
-    //     alert($scope.recipe_id+$scope.hostedLargeUrl+$scope.recipeName+data.userId);
-    //     $http.post(
-    //         'https://api.mlab.com/api/1/databases/lazyfoodie/collections/favorites/' + 
-    //          $scope.id + '?apiKey=lazyfoodie2016', data
-    //     ).then(function() {
-    //     alert("inside the add function"); 
-        
-    //   },function(status){
-    //       alert("error when adding favorite");
-    //   });
-    // }
-
 
     /*****************************************/
     /* Helper private methods */
@@ -79,6 +60,4 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
             $scope.errorMessage = 'Error getting top recipes from yummly: ' + error;
         })      
     }
-
-
 }); 
