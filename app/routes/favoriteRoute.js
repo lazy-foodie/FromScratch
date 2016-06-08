@@ -1,6 +1,8 @@
 // app/routes.js
 var path = require('path'),
 mongoose = require('mongoose')
+var express =require("express");
+var mongo = require('mongodb');
 // grab the favorite model we just created
 FavRecipe = require(path.resolve('./app/models/favoriteRecipe'));
 
@@ -23,7 +25,7 @@ module.exports = function(app) {
     });
 
     // Get fav by id
-    app.get('/api/favorites', function(req, res) {
+    app.get('/api/:userId/favorites', function(req, res) {
         // use mongoose to get all nerds in the database
         FavRecipe.find(function(err, favorites) {
             // if there is an error retrieving, send the error. 
@@ -47,6 +49,28 @@ module.exports = function(app) {
         }
       });
      });
+    });
+
+   //creates a new post
+    app.post('/api/post', function(req, res){
+     // FavRecipe.save({recipeId:'aaa',imageUrl:'aaa',name: 'aaa', userId: 'bich@gmail.com'});
+
+      console.log('in post');
+       console.log(req.body);
+       var recipe = new FavRecipe();
+        recipe.recipeId=req.body.recipeId;
+        recipe.imageUrl=req.body.imageUrl;
+        recipe.name = req.body.name;
+        recipe.userId = req.body.userId;
+        recipe.save(function(err) {
+            if (err)
+                res.send(err);
+              else 
+                res.send({"sucess": 'sucess'});
+            console.log('no error');
+          //  res.json({ message: 'recipe created!' });
+        });
+        
     });
     /*****************************************/
     /* Helper private methods */

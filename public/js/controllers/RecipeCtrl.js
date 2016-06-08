@@ -1,4 +1,4 @@
-angular.module('RecipeCtrl', []).controller('RecipeController', function($scope, $routeParams, $rootScope, RecipeService) {
+angular.module('RecipeCtrl', []).controller('RecipeController', function($scope, $routeParams, $rootScope, RecipeService,$http) {
     /*****************************************/
     /* Initialize variables */
     /*****************************************/   
@@ -24,10 +24,20 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
     $scope.getRecipeDetail = function() {
         getRecipeDetail();
     };
-    // $scope.togleEmbedRecipeWebSource = function (){
-    //     $scope.embedRecipeWebSource = !$scope.embedRecipeWebSource;
-    //     $scope.buttonText = ($scope.buttonText === 'Collapse') ? 'Show' : 'Collapse';
-    // }
+ 
+    //$scope.data = {'recipeId': $scope.recipeId,'imageUrl': $scope.hostedLargeUrl,'name': $scope.recipeName, 'userId': 'bich@gmail.com'};
+
+    $scope.addToFav = function() {
+        var data = {recipeId: $scope.recipe_id,imageUrl: $scope.hostedLargeUrl,name: $scope.recipeName, userId: 'bich@gmail.com'};
+        alert($scope.recipe_id+$scope.hostedLargeUrl+$scope.recipeName+data.userId);
+        $http.post('/api/post', data).then(function() {
+        alert("inside the add function"); 
+        
+      },function(status){
+          alert("error when adding favorite");
+      });
+    }
+
     /*****************************************/
     /* Helper private methods */
     /*****************************************/

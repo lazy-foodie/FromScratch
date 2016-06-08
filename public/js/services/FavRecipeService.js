@@ -35,6 +35,7 @@ angular.module('FavRecipeService', []).factory('FavRecipeService', function($htt
             ! response.data.message
             ) 
         {
+             //alert(response.data.message);
              return( $q.reject( "An unknown error occurred in FavRecipeService." ) );
         }
             // Otherwise, use expected error message.
