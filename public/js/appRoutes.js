@@ -20,7 +20,7 @@ theApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         // favRecipes page whose controller will be decided from the view
         .when('/favRecipes', {
             templateUrl: 'views/favoriteRecipesView.html',
-            access: {restricted: true}
+            access: {restricted: false}
         })
 
         // recipe detail of a recipe 
@@ -56,7 +56,7 @@ theApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         // user profile page
         .when('/profile', {
             templateUrl: 'views/profileView.html',
-            access: {restricted: true}
+            access: {restricted: false}
         })
 
         // search for recipes page

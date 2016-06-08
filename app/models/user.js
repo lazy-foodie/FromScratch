@@ -8,12 +8,7 @@ var UserSchema = new Schema( {
             firstName: String,
             lastName: String,
             email: String,
-            developer: Boolean,
-            favorites: [ {  
-                  recipeId : Number,
-                  imageUrl: String,
-                  name: String,
-            } ]
+            developer: Boolean
             },
       { collection: 'users' }
 );
