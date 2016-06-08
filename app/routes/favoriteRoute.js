@@ -37,23 +37,36 @@ module.exports = function(app) {
         });
     });
 
+    //  app.use(function(req, res, next) {
+    //     // use mongoose to get all nerds in the database
+    //     next();
+    // });
+
     //Try to delete a user's fav
-    app.delete('/api/favorites/:userId/:recipeId', function (req, res, next){
-        return FavRecipe.findOne({recipeId:req.params.recipeId, userId: req.params.userId}, function (err, favorite) {
-        return favorite.remove(function (err) {
-        if (!err) {
-          console.log("removed");
-          res.json(favorite);
-        } else {
-          console.log(err);
-          next(err);
-        }
-      });
+    app.delete('/api/favorites/:objId', function (req, res){
+       console.log(req.params);
+        var id = req.params.objId;
+        console.log("hahhhaaha"+req.params.objId);
+        FavRecipe.findById(id)
+        .exec(function(err, favorite){
+          if(err || !favorite){
+              console.log(err +"Error finding matching fav recipe");
+              res.send({});
+          }else{
+             favorite.remove(function (err) {
+              if(err){
+                console("found but cannot delete");
+                 res.send(err);
+              }else{
+                  res.send();
+              }
+          });
+       }
      });
     });
 
    //creates a new post
-    app.post('/api/post', function(req, res,next){
+    app.post('/api/post', function(req, res){
       console.log('in post');
        console.log(req.body);
        var recipe = new FavRecipe();
