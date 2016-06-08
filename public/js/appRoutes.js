@@ -79,6 +79,7 @@ theApp.run(function ($rootScope, $location, $route, UserService) {
         UserService.UserStatus()
         .then(function(){
             if (next.access.restricted && !UserService.IsLoggedIn()){
+                event.preventDefault();
                 $location.path('/login');
                 $route.reload();
             }

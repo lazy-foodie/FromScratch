@@ -8,7 +8,7 @@ angular.module('FavRecipeService', []).factory('FavRecipeService', function($htt
     /*****************************************/  
     var favRecipeService = {};
     favRecipeService.GetTestData = getTestData;
-
+ //   favRecipeService.DeleteTestData = deleteTestData;
     return favRecipeService;
 
     /*****************************************/
@@ -21,6 +21,11 @@ angular.module('FavRecipeService', []).factory('FavRecipeService', function($htt
         return $http.get(url).then(handleSuccess, handleError);
     }
 
+    // // For deleting a fav
+    // function deleteTestData () {
+    //     //var url = baseUrl + '/fake@gmail.com';
+    //   //  return $http.delete(url).then(handleSuccess, handleError);
+    // }
     /*****************************************/
     /* Helper private methods for error handling */
     /*****************************************/
@@ -30,7 +35,8 @@ angular.module('FavRecipeService', []).factory('FavRecipeService', function($htt
             ! response.data.message
             ) 
         {
-            return( $q.reject( "An unknown error occurred." ) );
+             //alert(response.data.message);
+             return( $q.reject( "An unknown error occurred in FavRecipeService." ) );
         }
             // Otherwise, use expected error message.
             return( $q.reject( response.data.message ) );

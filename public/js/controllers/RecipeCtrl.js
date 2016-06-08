@@ -1,4 +1,4 @@
-angular.module('RecipeCtrl', []).controller('RecipeController', function($scope, $routeParams, $rootScope, RecipeService) {
+angular.module('RecipeCtrl', []).controller('RecipeController', function($scope, $routeParams, $rootScope, RecipeService,$http) {
     /*****************************************/
     /* Initialize variables */
     /*****************************************/   
@@ -13,6 +13,7 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
     $scope.images =[];
     $scope.hostedLargeUrl;
     $scope.hostedSmallUrl;
+    $scope.course;
     $scope.recipe_id = $routeParams.recipeId;
     $scope.errorMessage;
     $scope.embedRecipeWebSource = false;
@@ -23,10 +24,18 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
     $scope.getRecipeDetail = function() {
         getRecipeDetail();
     };
-    // $scope.togleEmbedRecipeWebSource = function (){
-    //     $scope.embedRecipeWebSource = !$scope.embedRecipeWebSource;
-    //     $scope.buttonText = ($scope.buttonText === 'Collapse') ? 'Show' : 'Collapse';
-    // }
+
+    $scope.addToFav = function() {
+        var data = {recipeId: $scope.recipe_id,imageUrl: $scope.hostedLargeUrl,name: $scope.recipeName, userId: 'bich@gmail.com'};
+        $http.post('/api/post', data, {
+            headers: { 'Content-Type': 'application/json; charset=UTF-8'}
+        }).then(function() {
+        alert("Added to your favorite list!");         
+      },function(status){
+          alert("Error when adding favorite");
+      });
+    }
+
     /*****************************************/
     /* Helper private methods */
     /*****************************************/
@@ -38,6 +47,7 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
             $scope.rating = recipeDetail.rating;
             $scope.numberOfServings = recipeDetail.numberOfServings;
             $scope.sourceDisplayName = recipeDetail.source.sourceDisplayName;
+            $scope.course = recipeDetail.attributes.course.toString();
             $scope.sourceSiteUrl= recipeDetail.source.sourceSiteUrl;
             $scope.sourceRecipeUrl = recipeDetail.source.sourceRecipeUrl;
             $scope.ingredients = recipeDetail.ingredientLines.toString();
@@ -50,6 +60,4 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
             $scope.errorMessage = 'Error getting top recipes from yummly: ' + error;
         })      
     }
-
-
 }); 
