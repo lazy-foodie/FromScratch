@@ -38,8 +38,8 @@ module.exports = function(app) {
     });
 
     //Try to delete a user's fav
-    app.delete('/api/favorites/:userId', function (req, res, next){
-        return FavRecipe.findOne({userId: req.params.userId}, function (err, favorite) {
+    app.delete('/api/favorites/:userId/:recipeId', function (req, res, next){
+        return FavRecipe.findOne({recipeId:req.params.recipeId, userId: req.params.userId}, function (err, favorite) {
         return favorite.remove(function (err) {
         if (!err) {
           console.log("removed");

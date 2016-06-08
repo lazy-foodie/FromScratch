@@ -9,13 +9,16 @@ mymodal.controller('ModalController', function ($scope) {
     };
     
     $scope.ok = function () {
-    alert('deleting recipe id: ' + $scope.recipe_id);
-            $scope.showModal =false;
-            //$http.delete(url, $scope.recipe_id)
+        var url ='/api/favorites'+'/bich@gmail.com/'+ $scope.recipe_id;
+        return $http.delete(url).then(handleSuccess, handleError);
+        alert('deleting recipe id: ' + $scope.recipe_id);
+        $scope.showModal =false;
     };
+
     $scope.cancel = function() {         
         $scope.showModal =false;
     };
+     
   });
 
 mymodal.directive('modal', function () {
