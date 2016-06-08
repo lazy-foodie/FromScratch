@@ -106,11 +106,19 @@ mongoose.connect(mongooseUri);
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
+
 // routes ==================================================
 require('./app/routes/nerdRoute')(app); // configure our routes
 require('./app/routes/userRoute')(app); // configure our routes
 require('./app/routes/favoriteRoute')(app); // configure our routes 
 //core ui route
+app.use(function (req, res, next) {
+  console.log('Time:',Date.now());
+  next();
+});
+
 require('./routes')(app); // configure our routes
 
 

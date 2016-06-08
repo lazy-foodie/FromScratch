@@ -1,6 +1,6 @@
 var mymodal = angular.module('ModalCtrl', []);
 
-mymodal.controller('ModalController', function ($scope) {
+mymodal.controller('ModalController', function ($scope, $http,$window) {
     $scope.showModal = false;
     $scope.recipe_id = "";
     $scope.toggleModal = function(data){
@@ -9,13 +9,22 @@ mymodal.controller('ModalController', function ($scope) {
     };
     
     $scope.ok = function () {
-    alert('deleting recipe id: ' + $scope.recipe_id);
-            $scope.showModal =false;
-            //$http.delete(url, $scope.recipe_id)
+        var url ='/api/favorites/'+$scope.recipe_id;
+        $scope.showModal =false;
+        $http.delete(url).success(function(res){
+        alert('Successfully deleted from your favorites list!');
+        $window.location.reload();
+      },function(err){
+        alert("Error deleting" + err);
+
+      });
+
     };
+
     $scope.cancel = function() {         
         $scope.showModal =false;
     };
+     
   });
 
 mymodal.directive('modal', function () {
