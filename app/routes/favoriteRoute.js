@@ -3,6 +3,7 @@ var path = require('path'),
 mongoose = require('mongoose')
 var express =require("express");
 var mongo = require('mongodb');
+
 // grab the favorite model we just created
 FavRecipe = require(path.resolve('./app/models/favoriteRecipe'));
 
@@ -52,7 +53,7 @@ module.exports = function(app) {
     });
 
    //creates a new post
-    app.post('/api/post', function(req, res){
+    app.post('/api/post', function(req, res,next){
      // FavRecipe.save({recipeId:'aaa',imageUrl:'aaa',name: 'aaa', userId: 'bich@gmail.com'});
 
       console.log('in post');
@@ -66,8 +67,7 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
               else 
-                res.send({"sucess": 'sucess'});
-            console.log('no error');
+                res.send({"sucess":"sucess"});
           //  res.json({ message: 'recipe created!' });
         });
         
