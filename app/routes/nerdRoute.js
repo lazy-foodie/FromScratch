@@ -1,8 +1,9 @@
 // app/routes.js
 var path = require('path'),
-    mongoose = require('mongoose')
+    mongoose = require('mongoose');
 // grab the favorite model we just created
-    Nerd = require(path.resolve('./app/models/nerd'));
+ var   Nerd = require(path.resolve('./app/models/nerd'));
+ var   passport = require('passport');
 
     module.exports = function(app) {
 
@@ -23,6 +24,26 @@ var path = require('path'),
                 res.json(nerds); // return all nerds in JSON format
             });
         });
+
+        app.get('/logout', function(req, res){
+            req.logout();
+            res.send(200);
+        });
+
+        app.get('/loggedin', function(req, res){
+          res.send(req.isAuthenticated() ? req.user : '0');
+        });
+
+       app.get('/auth/facebook', function(req, res, next) {
+    console.log('Calling Facebook Authenticate');
+    passport.authenticate('facebook', {scope:['email', 'public_profile']})(req, res, next);
+});
+
+    app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+        failureRedirect: '/login',
+        successRedirect: '/',
+        scope:['email', 'public_profile']
+    }));
 
         // route to handle creating goes here (app.post)
         // route to handle delete goes here (app.delete)

@@ -1,4 +1,4 @@
-angular.module('LoginCtrl', []).controller('LoginController', ['$scope', '$location', 'UserService', function($scope, $location, UserService){
+var login = angular.module('LoginCtrl', []).controller('LoginController', ['$scope', '$location', 'UserService', function($scope, $location, UserService){
   	$scope.userLogin = {};
   	$scope.error = false;
     $scope.errorMessage ='';
@@ -21,7 +21,13 @@ angular.module('LoginCtrl', []).controller('LoginController', ['$scope', '$locat
             $scope.userLogin.password);
         UserService.Login($scope.userLogin)    
         .then(handleSuccess, handleError);  
-    }
+    };
+
+    $scope.signInWithFaceBook = function signInWithFaceBook() {
+        alert('signing in with facebook');
+        UserService.FacebookLogin()    
+        .then(handleSuccess, handleError);  
+    };
 
     /*****************************************/
     /* Helper private methods for error handling */
@@ -29,7 +35,8 @@ angular.module('LoginCtrl', []).controller('LoginController', ['$scope', '$locat
     function handleError(error) {
         console.log('LoginController.js: error logining: ' + error);
         $scope.error = true;
-        $scope.errorMessage = 'Invalid username and/or password';
+        // $scope.errorMessage = 'Invalid username and/or password';
+        $scope.errorMessage = error;
         $scope.userLogin.password = '';
         $scope.submitted = false;
     }

@@ -8,8 +8,17 @@ var UserSchema = new Schema( {
             firstName: String,
             lastName: String,
             email: String,
-            developer: Boolean
+            developer: {
+                type: Boolean,
+                required: true,
+                default: false
             },
+            facebook: {
+				id: String,
+				token: String,
+				name: String
+			}
+        },
       { collection: 'users' }
 );
 var User = mongoose.model('User', UserSchema);

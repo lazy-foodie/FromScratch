@@ -11,7 +11,8 @@ var http = require('http');
 chai.use(chaiHttp);
 
 var supertest = require('supertest');
-var server = supertest('http://lazyfoodie.azurewebsites.net/');
+// var server = supertest('http://lazyfoodie.azurewebsites.net/');
+var server = supertest('http://localhost:8080');
 
 // SERVER USER UNIT test begin
 describe('Test Users', function () {
@@ -40,7 +41,6 @@ describe('Test Users', function () {
         });
         it('The first entry in the array has known properties', function(done){
             expect(requestResult[0]).to.include.keys('firstName');
-            expect(response).to.have.deep.property('body[0].firstName', 'Emma');
             expect(response.body).to.not.be.a.string;
             done();
         });
@@ -53,13 +53,11 @@ describe('Test Users', function () {
                         expect(body[i]).to.have.property('firstName').to.have.length.above(1);
                         expect(body[i]).to.have.property('lastName').to.have.length.above(1);
                         expect(body[i]).to.have.property('email').to.have.length.above(5);
-                        expect(body[i]).to.have.property('favorites');
                         expect(body[i]).to.have.property('developer');
                         expect(body[i]).to.have.property('firstName').that.is.a('String');
                         expect(body[i]).to.have.property('lastName').that.is.a('String');
                         expect(body[i]).to.have.property('email').that.is.a('String');
                         expect(body[i]).to.have.property('developer').that.is.a('boolean');
-                        expect(body[i]).to.have.property('favorites').that.is.a('Array');
                     }
                     return true;
                 });
@@ -106,12 +104,10 @@ describe('Test Users', function () {
                     expect(body).to.have.property('lastName').to.have.length.above(1);
                     expect(body).to.have.property('email').to.have.length.above(5);
                     expect(body).to.have.property('developer');
-                    expect(body).to.have.property('favorites');
                     expect(body).to.have.property('firstName').that.is.a('String');
                     expect(body).to.have.property('lastName').that.is.a('String');
                     expect(body).to.have.property('email').that.is.a('String');
                     expect(body).to.have.property('developer').that.is.a('boolean');
-                    expect(body).to.have.property('favorites').that.is.a('Array');
 
                     return true;
                 });
