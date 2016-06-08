@@ -40,11 +40,10 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
             $scope.sourceDisplayName = recipeDetail.source.sourceDisplayName;
             $scope.sourceSiteUrl= recipeDetail.source.sourceSiteUrl;
             $scope.sourceRecipeUrl = recipeDetail.source.sourceRecipeUrl;
-            $scope.ingredients = recipeDetail.ingredientLines.toString();
+            $scope.ingredients = recipeDetail.ingredientLines;
             $scope.images = recipeDetail.images;
             $scope.hostedLargeUrl = $scope.images[0].hostedLargeUrl;
             $scope.hostedSmallUrl = $scope.images[0].hostedSmallUrl;
-            $routeParams.recipeId = '';
         }, function(error) {
             console.log('Error getting top recipes from yummly: ' + error);
             $scope.errorMessage = 'Error getting top recipes from yummly: ' + error;

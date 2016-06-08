@@ -26,27 +26,29 @@
   },
   "dependencies": {
     "body-parser": ">=0.0.0",
-    "connect": "^3.4.1",
     "bower": "^1.7.9",
+    "connect-mongo": "*",
+    "cookie-parser": ">=0.0.0",
+    "crypto": "*",
     "express": "~4.5.1",
-    "express-session":">=0.0.0",
-    "http":">=0.0.0",
+    "express-session": ">=0.0.0",
+    "fs": ">=0.0.0",
+    "http": ">=0.0.0",
     "method-override": ">=0.0.0",
+    "mongodb-uri": "*",
     "mongoose": ">=4.4.14",
     "morgan": ">=0.0.0",
-    "util": ">= 0.0.0", 
-    "mongodb-uri" : "*",
-    "connect-mongo" : "*",
-    "crypto" : "*"  
+    "passport": "^0.3.2",
+    "util": ">= 0.0.0"
   },
   "devDependencies": {
     "mocha": "^2.4.5",
     "should": "^7.1.1",
     "supertest": "^1.2.0",
-    "chai" : "*",
-    "chai-http" : "*",
-    "assert" : "*",
-    "q" : "*",
-    "async" : "*"
+    "chai": "*",
+    "chai-http": "*",
+    "assert": "*",
+    "q": "*",
+    "async": "*"
   }
 }

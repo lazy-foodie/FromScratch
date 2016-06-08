@@ -20,7 +20,7 @@ theApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         // favRecipes page whose controller will be decided from the view
         .when('/favRecipes', {
             templateUrl: 'views/favoriteRecipesView.html',
-            access: {restricted: false}
+            access: {restricted: true}
         })
 
         // recipe detail of a recipe 
@@ -56,7 +56,7 @@ theApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         // user profile page
         .when('/profile', {
             templateUrl: 'views/profileView.html',
-            access: {restricted: false}
+            access: {restricted: true}
         })
 
         // search for recipes page
@@ -79,6 +79,7 @@ theApp.run(function ($rootScope, $location, $route, UserService) {
         UserService.UserStatus()
         .then(function(){
             if (next.access.restricted && !UserService.IsLoggedIn()){
+                event.preventDefault();
                 $location.path('/login');
                 $route.reload();
             }
