@@ -152,5 +152,5 @@ var server = http.createServer(app, function (req, res) {
 server.listen(app.get('port'), function(){
 	console.log('Magic happens on port '  + app.get('port'));
 });	
-// expose app           
+// expose app     
 exports = module.exports = app;
