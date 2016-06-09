@@ -1,10 +1,9 @@
-angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeout',function($http, $q, $timeout) {
+angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeout', '$rootScope', function($http, $q, $timeout, $rootScope) {
     // base Rest API route
     var baseUrl = "api/users/";
 
     // Initialize user obj
     var user = null;
-
     /*****************************************/
     /* Initialize public services */
     /*****************************************/      
@@ -14,9 +13,9 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
     userService.Register = register;
     userService.Update = update;
     userService.Login = login;
+    userService.FacebookLogin = facebookLogin;
     userService.Logout = logout;
     userService.IsLoggedIn = isLoggedIn;
-    userService.CurrentUser = getCurrentUser;
     userService.UserStatus = getUserStatus;
 
     return userService;
@@ -63,7 +62,7 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
     }
 
     // Update
-    function update(user) {
+    function update(reqUser) {
         url = baseUrl + user.id;
         // create a new instance of deferred
         var deferred = $q.defer();
@@ -92,7 +91,7 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
 
     // Login
     function login(reqUser) {
-        url =  baseUrl+ 'login';
+        url =  '/api/users/login';
         // return $http.post(url, reqUser).then(handleSuccess, handleError);
         // create a new instance of deferred
         var deferred = $q.defer();
@@ -103,6 +102,8 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
         .then(function (data, status) {
             if(status === 200 && data.status){
                 user = reqUser;
+                $rootScope.currentUser = reqUser;
+
                 deferred.resolve();
             } else {
                 user = {};
@@ -111,7 +112,8 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
         },
         // handle error
         function (data) {
-            user = {};
+            user = null;
+            $rootScope.currentUser = null;
             deferred.reject();
         });
 
@@ -119,17 +121,48 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
         return deferred.promise;
     }
 
+   // Login
+    function facebookLogin() {
+        url =  '/auth/facebook';
+        alert('in facebookLogin in service')
+        return $http.post(url)
+            .then(function(data) {
+                console.log('successfully logged in: ' + data);
+                user = data;
+                $rootScope.currentUser = data;
+
+                // $alert({
+                //     title: 'Cheers!',
+                //     content: 'You have successfully logged in.',
+                //     placement: 'top-right',
+                //     type: 'success',
+                //     duration: 3
+                // });
+            }, function(err) {
+                console.log('error: ' + err);
+                // $alert({
+                //     title: 'Error!',
+                //     content: 'Error occurred',
+                //     placement: 'top-right',
+                //     type: 'danger',
+                //     duration: 3
+                // });
+            });
+    };
+
     // Logout
     function logout(user) {
-        url = baseUrl + 'logout';
+        url = '/logout';
+  
         // return $http.get(url).then(handleSuccess, handleError);
         // create a new instance of deferred
         var deferred = $q.defer();
+              $location.path('/');
         // send a get request to the server
-        $http.get(url)
+        $http.post(url)
         // handle success
         .then(function (data) {
-            user = {};
+            user = null;
             deferred.resolve();
         },
         // handle error
@@ -145,11 +178,6 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
     //Returns a boolean to check if user is logged in
     function isLoggedIn(){
         return user === null? false:true;
-    };
-
-    //Returns name of user logged in
-    function getCurrentUser(){
-        return user;
     };
 
     // Return a user status

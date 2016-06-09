@@ -1,6 +1,6 @@
-angular.module('UserCtrl', []).controller('UserController', function($scope, UserService) {
+angular.module('UserCtrl', []).controller('UserController', function($scope, $rootScope, UserService) {
 	$scope.tagline = 'Your Profile Is Coming Soon... :)';	
-	
+	$scope.singleUser = {};
 	UserService.GetTestData()
 		.then(function(data) {
 			$scope.testData = data;

@@ -41,9 +41,7 @@ describe('Test GET Favorites', function () {
         });
         it('The first entry in the array has known properties', function(done){
             expect(requestResult[0]).to.include.keys('imageUrl');
-            expect(response).to.have.deep.property('body[0].imageUrl', 'https://lh3.googleusercontent.com/F-_KH5pDERr6SceluRVM0Kwhr2_-S2nV9qQg3RpLuQm3eEjvKDRfJSXuIyt0_gdrHD8K6_t_hVRWTnt6sRi1PQ=s200-c');
             expect(requestResult[0]).to.include.keys('name');
-            expect(response).to.have.deep.property('body[0].name', 'Guacamole');            
             expect(response.body).to.not.be.a.string;
             done();
         });
@@ -54,8 +52,10 @@ describe('Test GET Favorites', function () {
                     for (var i = 0; i < body.length; i++) {
                         expect(body[i]).to.have.property('_id');
                         expect(body[i]).to.have.property('imageUrl').to.have.length.above(7);
+                        expect(body[i].imageUrl).to.not.equal(null);
                         expect(body[i]).to.have.property('name').to.have.length.above(3);
                         expect(body[i]).to.have.property('userId').to.have.length.above(5);
+                        expect(body[i].userId).to.not.equal(null);
                         expect(body[i]).to.have.property('imageUrl').that.is.a('String');
                         expect(body[i]).to.have.property('name').that.is.a('String');
                         expect(body[i]).to.have.property('userId').that.is.a('String');
