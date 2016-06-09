@@ -78,7 +78,7 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
               else 
-                res.send({"sucess":"sucess"});
+                res.json({success:"success"});
         });        
     });
 };

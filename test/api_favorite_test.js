@@ -1,4 +1,4 @@
-console.log('Starting API Test for Favorite');
+console.log('Starting API Test for GET Favorites');
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var async = require('async');
@@ -11,14 +11,15 @@ var http = require('http');
 chai.use(chaiHttp);
 
 var supertest = require('supertest');
-var server = supertest('http://lazyfoodie.azurewebsites.net/');
+/*var server = supertest('http://lazyfoodie.azurewebsites.net/');
+*/
+var server = supertest('http://localhost:8080/');
 
 // SERVER FAVORITE UNIT test begin
-describe('Test Favorites', function () {
-    this.timeout(15000);
+describe('Test GET Favorites', function () {
+    this.timeout(300000);
 
     describe('GET /api/favorites', function() {
-
         var requestResult;
         var response;
         before(function(done) {
@@ -63,5 +64,5 @@ describe('Test Favorites', function () {
                 });
             done();
         }); 
-    });      
-});
+    });
+});      
