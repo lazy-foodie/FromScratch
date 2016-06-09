@@ -25,26 +25,43 @@ var path = require('path'),
             });
         });
 
-        app.get('/logout', function(req, res){
+//app.get('/account', ensureAuthenticated, function(req, res){
+app.get('/user/profile', function(req, res){
+    if (req.isAuthenticated()) {
+      console.log('=============>user authenticated');
+      res.redirect('/profile', {});
+      var u = req.user;
+      Object.keys(u).forEach(function (key) {
+        console.log("Key:" + key);
+        console.log("Value:" + u[key]);
+      });
+  }
+  else {
+    console.log('------------->user not authenticated');
+    res.redirect('/login', {});      
+  }
+});
+
+        app.get('/logout', function(req, res, next){
+                        console.log('Logging out');
             req.logout();
-            res.send(200);
+            res.redirect('/');
         });
 
-        app.get('/loggedin', function(req, res){
+        app.get('/status', function(req, res){
           res.send(req.isAuthenticated() ? req.user : '0');
         });
 
-       app.get('/auth/facebook', function(req, res, next) {
-    console.log('Calling Facebook Authenticate');
-    passport.authenticate('facebook', {scope:['email', 'public_profile']})(req, res, next);
-});
+        app.get('/auth/facebook', function(req, res, next) {
+            console.log('Calling Facebook Authenticate');
+            passport.authenticate('facebook', {scope:['email', 'public_profile']})(req, res, next);
+        });
 
-    app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-        failureRedirect: '/login',
-        successRedirect: '/',
-        scope:['email', 'public_profile']
-    }));
-
+        app.get('/auth/facebook/callback',
+          passport.authenticate('facebook', { failureRedirect: '/login', scope:['email', 'public_profile'] }),
+          function(req, res) {
+            res.redirect('/');
+          });
         // route to handle creating goes here (app.post)
         // route to handle delete goes here (app.delete)
 

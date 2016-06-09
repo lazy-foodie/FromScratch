@@ -49,14 +49,14 @@
                 <ul class="nav navbar-nav navbar-right" ng-if='!currentUser'>
                     <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right" ng-if='currentUser'>
+                <ul class="nav navbar-nav navbar-right" ng-if='!currentUser'>
                     <li>
-                        <a href="/profile">
+                        <a href="/user/profile" target="_self">
                             <span class="glyphicon glyphicon-user"></span> {{currentUser.firstName}}
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" ng-click="logout()">Logout</a>
+                        <a href="/logout" target="_self">Logout</a>          
                     </li>
                 </ul>
             </div>

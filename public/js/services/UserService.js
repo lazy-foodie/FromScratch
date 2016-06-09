@@ -125,7 +125,7 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
     function facebookLogin() {
         url =  '/auth/facebook';
         alert('in facebookLogin in service')
-        return $http.post(url)
+        return $http.get(url)
             .then(function(data) {
                 console.log('successfully logged in: ' + data);
                 user = data;
@@ -182,13 +182,14 @@ angular.module('UserService', []).factory('UserService', ['$http', '$q', '$timeo
 
     // Return a user status
     function getUserStatus() {
-        var url = baseUrl + 'status';
+        var url = '/status';
         return $http.get(url)
           // handle success
         .then(function (data) {
-            if(!data.status){
+            if(!data){
               user = {};
             } 
+            user = data
         },
           // handle error
         function (data) {
