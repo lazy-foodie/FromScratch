@@ -6,7 +6,7 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ro
 		}, function(error) {
 			alert('error' + error);
 		});
-	UserService.GetUserById("57399eabdcba0f089283c6e1")
+	UserService.GetUserById("5758c9091519199416b74624")
 		.then(function(data) {
 			$scope.singleUser = data;
 		}, function(error) {
