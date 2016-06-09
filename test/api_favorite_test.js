@@ -52,8 +52,8 @@ describe('Test Favorites', function () {
                         expect(body[i]).to.have.property('_id');
                         expect(body[i]).to.have.property('imageUrl').to.have.length.above(7);
                         expect(body[i].imageUrl).to.not.equal(null);
-                        expect(body[i]).to.have.property('name').to.have.length.above(3);
-                        expect(body[i]).to.have.property('userId').to.have.length.above(5);
+                        expect(body[i]).to.have.property('name').to.have.length.above(2);
+                        expect(body[i]).to.have.property('userId').to.have.length.above(2);
                         expect(body[i].userId).to.not.equal(null);
                         expect(body[i]).to.have.property('imageUrl').that.is.a('String');
                         expect(body[i]).to.have.property('name').that.is.a('String');

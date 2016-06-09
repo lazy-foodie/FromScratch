@@ -29,8 +29,9 @@ angular.module('RecipeCtrl', []).controller('RecipeController', function($scope,
         var data = {recipeId: $scope.recipe_id,imageUrl: $scope.hostedLargeUrl,name: $scope.recipeName, userId: 'bich@gmail.com'};
         $http.post('/api/post', data, {
             headers: { 'Content-Type': 'application/json; charset=UTF-8'}
-        }).then(function() {
-        alert("Added to your favorite list!");         
+        }).then(function(res) {
+        alert("Added to your favorite list!");  
+        alert(res? 'has res':'no res');       
       },function(status){
           alert("Error when adding favorite");
       });

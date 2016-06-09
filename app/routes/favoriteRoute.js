@@ -67,8 +67,6 @@ module.exports = function(app) {
 
    //creates a new post
     app.post('/api/post', function(req, res){
-      console.log('in post');
-       console.log(req.body);
        var recipe = new FavRecipe();
         recipe.recipeId=req.body.recipeId;
         recipe.imageUrl=req.body.imageUrl;
@@ -78,7 +76,7 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
               else 
-                res.send({"sucess":"sucess"});
+                res.send(res.body);
         });        
     });
 };
